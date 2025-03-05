@@ -87,10 +87,9 @@ function givePersonalausweis(player, data) {
     });
 
     player.give(book);
-    let copyBarrel = player.getLevel().getBlock(new BlockPos(copyx, copyy, copyz));
-    player.tell(typeof copyBarrel);
-    player.tell(copyBarrel);
-    player.tell(Object.getOwnPropertyNames(copyBarrel));
+    let copyBarrel = player.getLevel().getBlock(new BlockPos(copyx, copyy, copyz)).getBlockState();
+    player.tell(copyBarrel.toString());
+    // TODO: Make this work.
     // copyBarrel.insertItem(0, book, false);
 
     if (player.getTags().contains("rpn.continuescene")){
