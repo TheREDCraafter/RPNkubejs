@@ -1,0 +1,98 @@
+function give_pferd(player) {
+    let pferd = Item.of('minecraft:writable_book', "{RepairCost:0,display:{Name:'{\"text\":\"Antrag auf Pferdezulassung\"}'},pages:[\"Antrag auf\n\
+Pferdezulassung\n\
+===================\n\
+Name:\n\
+Vorname:\n\
+\n\
+Pferdename:\n\
+(Name) [IC-XX]\n\
+\n\
+Geschwindigkeit:\n\
+Sprunghöhe:\n\
+\"]}")
+    player.give(pferd)
+}
+
+function give_steuer(player) {
+    let steuer = Item.of('minecraft:writable_book', "{RepairCost:0,display:{Name:'{\"text\":\"Steuererklärung\"}'},pages:[\"--Steuererklärung--\n\
+\n\
+Name: Mustermann\n\
+\n\
+Vorname: Max\n\
+\n\
+Geburtstag:01.01.1800\n\
+\n\
+Geschlecht: m/w/d\n\
+\n\
+Hauptwohnsitz: Infinity\",\"----  Immobilien  ----\n\
+\n\
+-- Immobilie 1 --\n\
+Art: Wohnung / Haus\n\
+Adresse: Straße 1\n\
+Größe (m2): 100\n\
+\n\
+-- Immobilie 2 --\n\
+Art: Wohnung / Haus\n\
+Adresse: Straße 2\n\
+Größe (m2): 100 \",\"---- Einkommen ----\n\
+\n\
+-- Beruf 1 --\n\
+Gehalt: 100$\n\
+Firma: Musterfirma\n\
+Tätigkeit: Müllmann\n\
+\n\
+-- Beruf 2 --\n\
+Gehalt: 100$\n\
+Firma: Musterfirma 2\n\
+Tätigkeit: Müllfrau\",\"---- Umsatz ----\n\
+\n\
+-- Firma 1 --\n\
+Name: Musterfirma\n\
+Sektor: Bauarbeiten\n\
+Umsatz: 300$\n\
+Anzahl Mitarbeiter: 2 \n\
+\n\
+-- Firma 2 --\n\
+Name: Musterfirma 2\n\
+Sektor: Finanzen\n\
+Umsatz: 1000$\n\
+Anzahl Mitarbeiter: 4\",\"-- Firmenausgaben --\n\
+\n\
+-- Ausgabe 1 --\n\
+Höhe: 10$\n\
+Firma: Musterfirma\n\
+Grund: Auftrag / Büro\n\
+\n\
+-- Ausgabe 2 --\n\
+Höhe: 20$\n\
+Firma: Musterfirma 2\n\
+Grund: Bürokosten\",\"---- Regeln ----\n\
+\n\
+Sie sind verpflichtet ein mal im Monat eine Steuererklärung an das Büro des Finanzministeriums zu senden. Alle Angaben müssen wahrheitsgemäß sein. Steuerhinterziehung werden mit Haftstrafen geahndet. Das Finanzministerium\",\"kann gelegentlich auch Kontrollen durchführen, ob alle Steuern korrekt abgerechnet werden. Dafür können Firmen überwacht und durchleuchtet werden. Auch die Größe von Wohnungen und Häusern werden überprüft.\"]}")
+
+    player.give(steuer)
+}
+
+ServerEvents.commandRegistry(event => {
+    const { commands: Commands, arguments: Arguments } = event;
+
+    event.register(
+        Commands.literal('doc')
+            .requires(source => source.hasPermission(2))
+            .then(Commands.literal("steuer")
+                .executes(context => {
+                    const player = context.source.player;
+                    give_steuer(player);
+                    return 1;
+                })
+            )
+            .then(Commands.literal("pferd")
+                .executes(context => {
+                    const player = context.source.player;
+                    give_pferd(player);
+                    return 1;
+                })
+            )
+    )
+});
