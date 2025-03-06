@@ -67,6 +67,7 @@ function givePersonalausweis(player, data) {
     const book = Item.of('minecraft:written_book', {
         author: '[IC] Rathaus',
         title: '[PA] ' + data[1] + ' ' + data[2],
+        display:{Lore:['{"text":"[PA] - Infinity City","color":"dark_purple"}']},
         pages: [
             JSON.stringify({
                 text: "-------------------\n" +
