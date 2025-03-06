@@ -113,7 +113,7 @@ ServerEvents.commandRegistry(event => {
                     return 1;
                 })
             )
-            .then(Command.literal("waffen")
+            .then(Commands.literal("waffen")
                 .executes(context => {
                     const player = context.source.player;
                     giveWaffen(player);
