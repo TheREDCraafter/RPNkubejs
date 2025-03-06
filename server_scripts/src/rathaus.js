@@ -1,0 +1,18 @@
+ServerEvents.commandRegistry(event => {
+
+    const { commands: Commands, arguments: Arguments } = event;
+
+    event.register(
+        Commands.literal("rathaus")
+            .requires(source => source.hasPermission(2))
+            .then(Commands.literal("ring")
+                .executes(context => {
+                    context.source.player.getServer().players.forEach(element => {
+                        element.runCommandSilent("playsound minecraft:entity.experience_orb.pickup master @s[tag=rpn.ring] ~ ~ ~ 1 1");
+                        element.runCommandSilent(`tellraw @s[tag=rpn.ring] {"text":"Im Rathaus wurde geklingelt!","color":"green","bold":"true"}`);
+                    });
+                    return 1;
+                })
+            )
+    );
+});
