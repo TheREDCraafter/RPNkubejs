@@ -79,7 +79,7 @@ function giveWaffen(player) {
 Antrag auf Waffenschein\n\
 -------------------\n\
 Name:\n\
-\n\ 
+\n\
 Vorname:\n\
 \n\
 Geboren:\n\
