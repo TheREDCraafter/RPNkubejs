@@ -93,6 +93,37 @@ Grund:\n\
     player.give(waffen)
 }
 
+function giveImport(player) {
+    let importantrag = Item.of('minecraft:writable_book', ```{RepairCost:0,display:{Name:'{\"text\":\"Importantrag\"}'},pages:[\"-------------------
+Importantrag
+-------------------
+Name:
+
+Vorname:
+
+Geboren:
+
+Lieferadresse:
+
+--> Nächste Seite\",\"-------------------
+Importantrag
+-------------------
+Waren:\",\"-------------------
+Importantrag
+-------------------
+Waren:
+
+
+
+
+
+
+
+*wenn notwendig weitere Seiten erstellen*\"]}```);
+
+    player.give(importantrag)
+}
+
 ServerEvents.commandRegistry(event => {
     const { commands: Commands, arguments: Arguments } = event;
 
@@ -117,6 +148,13 @@ ServerEvents.commandRegistry(event => {
                 .executes(context => {
                     const player = context.source.player;
                     giveWaffen(player);
+                    return 1;
+                })
+            )
+            .then(Commands.literal("import")
+                .executes(context => {
+                    const player = context.source.player;
+                    giveImport(player);
                     return 1;
                 })
             )
