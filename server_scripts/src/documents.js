@@ -124,6 +124,37 @@ Waren:
     player.give(importantrag)
 }
 
+function giveFirma(player) {
+    let firma = Item.of('minecraft:writable_book', `{RepairCost:0,display:{Name:'{\"text\":\"Antrag auf Firmenlizenz\"}'},pages:[\"-------------------
+Firmenantrag
+Angaben zum Besitzer
+-------------------
+Name:
+
+Vorname:
+
+Geboren:
+
+Adresse:\",\"-------------------
+Firmenantrag
+Angaben zur Firma
+-------------------
+Firmenname:
+
+Firmenart:
+
+Unfallhaftung:
+
+\",\"-------------------
+Firmenantrag
+Angaben zur Firma
+-------------------
+Firmenadresse(n):\"]}`);
+
+    player.give(firma)
+
+}
+
 ServerEvents.commandRegistry(event => {
     const { commands: Commands, arguments: Arguments } = event;
 
@@ -155,6 +186,13 @@ ServerEvents.commandRegistry(event => {
                 .executes(context => {
                     const player = context.source.player;
                     giveImport(player);
+                    return 1;
+                })
+            )
+            .then(Commands.literal("firma")
+                .executes(context => {
+                    const player = context.source.player;
+                    giveFirma(player);
                     return 1;
                 })
             )
