@@ -92,7 +92,8 @@ function givePersonalausweis(player, data) {
     book.getId();
     player.tell("Getting NBT");
     book.getNbt();
-    player.runCommand(`item replace block ${copyx} ${copyy} ${copyz} container.0 with ${book.getId()}${book.getNbt()}`);
+    player.tell(`Putting book into barrel with command 'execute in minecraft:overworld run item replace block ${copyx} ${copyy} ${copyz} container.0 with ${book.getId()}${book.getNbt()}'`);
+    player.runCommand(`execute in minecraft:overworld run item replace block ${copyx} ${copyy} ${copyz} container.0 with ${book.getId()}${book.getNbt()}`);
 
     if (player.getTags().contains("rpn.continuescene")){
         player.runCommandSilent("tag @s remove rpn.continuescene");
