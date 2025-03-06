@@ -88,13 +88,11 @@ function givePersonalausweis(player, data) {
 
     player.give(book);
     // HACK: Just put the book into the barrel by command
-    player.tell("Getting ID");
-    book.getId();
-    player.tell("Getting NBT");
-    book.getNbt();
-    player.tell(`Putting book into barrel with command 'execute in minecraft:overworld run item replace block ${copyx} ${copyy} ${copyz} container.0 with ${book.getId()}${book.getNbt()}'`);
-    console.log(`Putting book into barrel with command 'execute in minecraft:overworld run item replace block ${copyx} ${copyy} ${copyz} container.0 with ${book.getId()}${book.getNbt()}'`)
-    player.runCommand(`execute in minecraft:overworld run item replace block ${copyx} ${copyy} ${copyz} container.0 with ${book.getId()}${book.getNbt()}`);
+    // What we know: The command works as the server, but gives an error when executed from here
+    
+    player.getServer().scheduleInTicks(5, () => {
+        player.runCommand(`execute in minecraft:overworld run item replace block ${copyx} ${copyy} ${copyz} container.0 with ${book.getId()}${book.getNbt()}`);
+    })
 
     if (player.getTags().contains("rpn.continuescene")){
         player.runCommandSilent("tag @s remove rpn.continuescene");
