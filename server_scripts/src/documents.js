@@ -94,7 +94,7 @@ Grund:\n\
 }
 
 function giveImport(player) {
-    let importantrag = Item.of('minecraft:writable_book', ```{RepairCost:0,display:{Name:'{\"text\":\"Importantrag\"}'},pages:[\"-------------------
+    let importantrag = Item.of('minecraft:writable_book', `{RepairCost:0,display:{Name:'{\"text\":\"Importantrag\"}'},pages:[\"-------------------
 Importantrag
 -------------------
 Name:
@@ -119,7 +119,7 @@ Waren:
 
 
 
-*wenn notwendig weitere Seiten erstellen*\"]}```);
+*wenn notwendig weitere Seiten erstellen*\"]}`);
 
     player.give(importantrag)
 }
