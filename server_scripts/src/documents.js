@@ -69,9 +69,28 @@ Höhe: 20$\n\
 Firma: Musterfirma 2\n\
 Grund: Bürokosten\",\"---- Regeln ----\n\
 \n\
-Sie sind verpflichtet ein mal im Monat eine Steuererklärung an das Büro des Finanzministeriums zu senden. Alle Angaben müssen wahrheitsgemäß sein. Steuerhinterziehung werden mit Haftstrafen geahndet. Das Finanzministerium\",\"kann gelegentlich auch Kontrollen durchführen, ob alle Steuern korrekt abgerechnet werden. Dafür können Firmen überwacht und durchleuchtet werden. Auch die Größe von Wohnungen und Häusern werden überprüft.\"]}")
+Sie sind verpflichtet ein mal im Monat eine Steuererklärung an das Büro des Finanzministeriums zu senden. Alle Angaben müssen wahrheitsgemäß sein. Steuerhinterziehung wird mit Haftstrafen geahndet. Das Finanzministerium\",\"kann gelegentlich auch Kontrollen durchführen, ob alle Steuern korrekt abgerechnet werden. Dafür können Firmen überwacht und durchleuchtet werden. Auch die Größe von Wohnungen und Häusern werden überprüft.\"]}")
 
     player.give(steuer)
+}
+
+function giveWaffen(player) {
+    let waffen = Item.of('minecraft:writable_book', `{RepairCost:0,display:{Name:'{\"text\":\"Antrag auf Waffenschein\"}'},pages:[\"-------------------\n\
+        Antrag auf Waffenschein\n\
+        -------------------\n\
+        Name:\n\
+        \n\ 
+        Vorname:\n\
+        \n\
+        Geboren:\n\
+        \n\
+        Grund:\n\
+        \n\
+        \n\
+        \n\
+        \"]}`);
+
+    player.give(waffen)
 }
 
 ServerEvents.commandRegistry(event => {
@@ -91,6 +110,13 @@ ServerEvents.commandRegistry(event => {
                 .executes(context => {
                     const player = context.source.player;
                     give_pferd(player);
+                    return 1;
+                })
+            )
+            .then(Command.literal("waffen")
+                .executes(context => {
+                    const player = context.source.player;
+                    giveWaffen(player);
                     return 1;
                 })
             )
