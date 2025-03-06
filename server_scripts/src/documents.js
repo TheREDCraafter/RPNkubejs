@@ -76,19 +76,19 @@ Sie sind verpflichtet ein mal im Monat eine Steuererklärung an das Büro des Fi
 
 function giveWaffen(player) {
     let waffen = Item.of('minecraft:writable_book', `{RepairCost:0,display:{Name:'{\"text\":\"Antrag auf Waffenschein\"}'},pages:[\"-------------------\n\
-        Antrag auf Waffenschein\n\
-        -------------------\n\
-        Name:\n\
-        \n\ 
-        Vorname:\n\
-        \n\
-        Geboren:\n\
-        \n\
-        Grund:\n\
-        \n\
-        \n\
-        \n\
-        \"]}`);
+Antrag auf Waffenschein\n\
+-------------------\n\
+Name:\n\
+\n\ 
+Vorname:\n\
+\n\
+Geboren:\n\
+\n\
+Grund:\n\
+\n\
+\n\
+\n\
+\"]}`);
 
     player.give(waffen)
 }
