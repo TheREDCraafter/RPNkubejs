@@ -66,7 +66,7 @@ function handleInput(player, input) {
 function givePersonalausweis(player, data) {
     const book = Item.of('minecraft:written_book', {
         author: '[IC] Rathaus',
-        title: 'Personalausweis',
+        title: '[PA] ' + data[1] + ' ' + data[2],
         pages: [
             JSON.stringify({
                 text: "-------------------\n" +
