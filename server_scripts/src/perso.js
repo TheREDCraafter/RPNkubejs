@@ -92,11 +92,11 @@ function givePersonalausweis(player, data) {
     book.getId();
     player.tell("Getting NBT");
     book.getNbt();
-    player.runCommandSilent(`item replace block ${copyx} ${copyy} ${copyz} container.0 with ${book.getId()}${book.getNbt()}`);
+    player.runCommand(`item replace block ${copyx} ${copyy} ${copyz} container.0 with ${book.getId()}${book.getNbt()}`);
 
     if (player.getTags().contains("rpn.continuescene")){
-        player.runCommandSilent("cutscene 1 @p");
         player.runCommandSilent("tag @s remove rpn.continuescene");
+        player.runCommandSilent("cutscene 1 @p");
     }
 }
 
