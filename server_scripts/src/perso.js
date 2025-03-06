@@ -87,11 +87,10 @@ function givePersonalausweis(player, data) {
     });
 
     player.give(book);
+
     // HACK: Just put the book into the barrel by command
-    // What we know: The command works as the server, but gives an error when executed from here
-    
     player.getServer().scheduleInTicks(5, () => {
-        player.runCommand(`execute in minecraft:overworld run item replace block ${copyx} ${copyy} ${copyz} container.0 with ${book.getId()}${book.getNbt()}`);
+        player.runCommandSilent(`execute in minecraft:overworld run item replace block ${copyx} ${copyy} ${copyz} container.0 with ${book.getId()}${book.getNbt()}`);
     })
 
     if (player.getTags().contains("rpn.continuescene")){
