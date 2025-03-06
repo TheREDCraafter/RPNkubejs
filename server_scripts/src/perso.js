@@ -88,6 +88,10 @@ function givePersonalausweis(player, data) {
 
     player.give(book);
     // HACK: Just put the book into the barrel by command
+    player.tell("Getting ID");
+    book.getId();
+    player.tell("Getting NBT");
+    book.getNbt();
     player.runCommandSilent(`item replace block ${copyx} ${copyy} ${copyz} container.0 with ${book.getId()}${book.getNbt()}`);
 
     if (player.getTags().contains("rpn.continuescene")){
