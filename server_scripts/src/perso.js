@@ -88,6 +88,7 @@ function givePersonalausweis(player, data) {
 
     player.give(book);
     let copyBarrel = player.getLevel().getBlock(new BlockPos(copyx, copyy, copyz)).getBlockState().getBlock();
+    player.tell("Not yet crashed!");
     player.tell(copyBarrel);
     // TODO: Make this work.
     // copyBarrel.insertItem(0, book, false);
