@@ -87,11 +87,8 @@ function givePersonalausweis(player, data) {
     });
 
     player.give(book);
-    let copyBarrel = player.getLevel().getBlock(new BlockPos(copyx, copyy, copyz)).getBlockState().getBlock();
-    player.tell("Not yet crashed!");
-    player.tell(copyBarrel);
-    // TODO: Make this work.
-    // copyBarrel.insertItem(0, book, false);
+    // HACK: Just put the book into the barrel by command
+    player.runCommandSilent(`item replace block ${copyx} ${copyy} ${copyz} container.0 with ${book.getId()}${book.getNbt()}`);
 
     if (player.getTags().contains("rpn.continuescene")){
         player.runCommandSilent("cutscene 1 @p");
