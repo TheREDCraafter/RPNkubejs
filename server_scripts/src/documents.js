@@ -220,9 +220,10 @@ ServerEvents.commandRegistry(event => {
 
                         player.tell(pages.toString().replace(/\n/g, "\\n"));
                         player.tell(`"pages": ${pages.toString()}`);
-
-                        player.runCommand(`give @s minecraft:written_book{title: "[${stamp}] ${name}", author: "Rathaus [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${pages.toString().replace("\n", "\\n")}}`);
-                        console.log(`give @s minecraft:written_book{title: "[${stamp}] ${name}", author: "Rathaus [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${pages.toString().replace("\n", "\\n")}}`)
+                        
+                        const input = pages.toString().replace("\n", "\\n");
+                        console.log(`give @s minecraft:written_book{title: "[${stamp}] ${name}", author: "Rathaus [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
+                        player.runCommand(`give @s minecraft:written_book{title: "[${stamp}] ${name}", author: "Rathaus [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
 
                         return 1;
                     })
