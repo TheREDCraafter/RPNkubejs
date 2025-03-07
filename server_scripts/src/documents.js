@@ -217,12 +217,9 @@ ServerEvents.commandRegistry(event => {
 
                         const pages = item.nbt.pages;
                         player.getMainHandItem().setCount(0);
-
-                        player.tell(pages.toString().replace(/\n/g, "\\n"));
-                        player.tell(`"pages": ${pages.toString()}`);
                         
-                        const input = pages.toString().replace("\n", "\\n");
-                        console.log(`give @s minecraft:written_book{title: "[${stamp}] ${name}", author: "Rathaus [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
+                        const input = pages.toString().replace("\n", "\\\\n");
+                        // console.log(`give @s minecraft:written_book{title: "[${stamp}] ${name}", author: "Rathaus [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
                         player.runCommand(`give @s minecraft:written_book{title: "[${stamp}] ${name}", author: "Rathaus [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
 
                         return 1;
