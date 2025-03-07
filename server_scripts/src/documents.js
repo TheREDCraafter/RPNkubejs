@@ -216,20 +216,8 @@ ServerEvents.commandRegistry(event => {
                         }
 
                         const pages = item.nbt.pages;
-                        player.tell(pages.toString());
-                        player.tell(pages.toString().replace("\n", "\\n"));
-
-                        let signedBook = Item.of("minecraft:written_book", 1, {
-                            title: `[${stamp}] ${name}`,
-                            author: `Rathaus [IC]`,
-                            display:{Lore:[`{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}`]},
-                            pages: pages.map(page => JSON.parse(`"${page.replace(/\n/g, "\\n")}"`))
-                        })
-
-                        console.log("Newer NBT: \n\n" + signedBook.nbt);
-
                         player.getMainHandItem().setCount(0);
-                        player.give(signedBook);
+                        player.runCommandSilent(`give @s "minecraft:written_book"{"title": "[${stamp}] ${name}", "author": "Rathaus [IC]", "display": {"Lore": ["{\"text\":\"[${stamp}] | Infinity City\",\"color\":\"dark_purple\",\"italic\":false}"]}, "pages": ${pages}}`);
 
                         return 1;
                     })
