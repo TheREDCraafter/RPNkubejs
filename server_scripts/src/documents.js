@@ -215,7 +215,7 @@ ServerEvents.commandRegistry(event => {
                             return 0;
                         }
 
-                        const pages = JSON.stringify(item.nbt.pages);
+                        const pages = item.nbt.pages;
 
                         player.tell(pages);
 
@@ -227,7 +227,7 @@ ServerEvents.commandRegistry(event => {
 
                         console.log("New NBT: \n\n" + JSON.stringify(signedBook.nbt));
 
-                        signedBook.nbt.pages = JSON.parse(pages);
+                        signedBook.nbt.pages = pages;
 
                         console.log("Newer NBT: \n\n" + JSON.stringify(signedBook.nbt));
 
