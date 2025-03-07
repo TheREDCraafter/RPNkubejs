@@ -215,7 +215,7 @@ ServerEvents.commandRegistry(event => {
                             return 0;
                         }
 
-                        const pages = JSON.stringify(item.nbt.pages);
+                        const pages = JSON.stringify(JSON.parse(item.nbt.toString()).pages);
 
                         player.tell(pages);
 
