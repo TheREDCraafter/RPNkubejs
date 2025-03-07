@@ -223,7 +223,7 @@ ServerEvents.commandRegistry(event => {
                             title: `[${stamp}] ${name}`,
                             author: `Rathaus [IC]`,
                             display:{Lore:[`{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}`]},
-                            pages: pages.map(page => page.getAsString())
+                            pages: pages.map(page => JSON.parse(`"${page.replace(/\n/g, "\\n")}"`))
                         })
 
                         console.log("Newer NBT: \n\n" + signedBook.nbt);
