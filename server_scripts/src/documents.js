@@ -224,7 +224,7 @@ ServerEvents.commandRegistry(event => {
                             pages: pages
                         })
 
-                        console.log("Newer NBT: \n\n" + signedBook.nbt.pages);
+                        console.log("Newer NBT: \n\n" + signedBook.nbt);
 
                         player.getMainHandItem().setCount(0);
                         player.give(signedBook);
