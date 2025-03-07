@@ -196,5 +196,39 @@ ServerEvents.commandRegistry(event => {
                     return 1;
                 })
             )
-    )
+    );
+
+    event.register(
+        Commands.literal("sign")
+            .requires(source => source.hasPermission(2))
+            .then(Commands.argument("stamp", Arguments.STRING.create(event))
+                .then(Commands.argument("name", Arguments.STRING.create(event))
+                    .executes(context => {
+                        const stamp = Arguments.STRING.getResult(context, "stamp");
+                        const name = Arguments.STRING.getResult(context, "name");
+
+                        const player = context.source.player;
+                        const item = player.getMainHandItem();
+
+                        if (item.getId() !== "minecraft:writable_book") {
+                            player.tell(Component.red("Du musst ein Buch in der Hand halten!"));
+                            return 0;
+                        }
+
+                        const pages = item.nbt.pages;
+
+                        let signedBook = Item.of("minecraft:written_book", {
+                            title: `[${stamp}] ${name}`,
+                            author: `Rathaus [IC]`,
+                            display:{Lore:[`{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}`]}
+                        })
+
+                        signedBook.nbt.pages = pages;
+                        player.give(signedBook);
+                        player.getMainHandItem().setCount(0);
+                    })
+                )
+            )
+    );
+
 });
