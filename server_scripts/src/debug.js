@@ -18,6 +18,13 @@ ServerEvents.commandRegistry(event => {
                 player.runCommandSilent("tag @s remove rpn.perso");
                 return 1;
             })
+            .then(Arguments.PLAYER.create("player")
+                .executes(context => {
+                    const player = Arguments.PLAYER.getResult(context, "player");
+                    player.runCommandSilent("tag @s remove rpn.perso");
+                    return 1;
+                })
+            )
         )
     );
 });

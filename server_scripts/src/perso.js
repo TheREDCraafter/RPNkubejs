@@ -6,7 +6,7 @@ const copyz = 91;
 function startPersonalausweisCreation(player) 
 {
 	if (player.getTags().contains("rpn.perso")){
-		player.tell(Component.yellow("Du hast schon einen Personalausweis!"));
+		player.tell(Component.yellow("Sie haben schon einen Personalausweis!"));
 		return;
 	}
 	player.runCommandSilent("tag @s add rpn.perso");
