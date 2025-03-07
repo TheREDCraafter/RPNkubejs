@@ -18,7 +18,7 @@ ServerEvents.commandRegistry(event => {
                 player.runCommandSilent("tag @s remove rpn.perso");
                 return 1;
             })
-            .then("player", Arguments.PLAYER.create(event)
+            .then(Commands.argument("player", Arguments.PLAYER.create(event))
                 .executes(context => {
                     const player = Arguments.PLAYER.getResult(context, "player");
                     player.runCommandSilent("tag @s remove rpn.perso");
