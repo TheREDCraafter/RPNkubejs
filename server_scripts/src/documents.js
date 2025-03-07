@@ -216,6 +216,8 @@ ServerEvents.commandRegistry(event => {
                         }
 
                         const pages = item.nbt.pages;
+                        player.tell(pages.toString());
+                        player.tell(pages.toString().replace("\n", "\\n"));
 
                         let signedBook = Item.of("minecraft:written_book", 1, {
                             title: `[${stamp}] ${name}`,
