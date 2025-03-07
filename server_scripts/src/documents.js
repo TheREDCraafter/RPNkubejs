@@ -225,11 +225,11 @@ ServerEvents.commandRegistry(event => {
                             display:{Lore:[`{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}`]}
                         })
 
-                        console.log("New NBT: \n\n" + JSON.stringify(signedBook.nbt));
+                        console.log("New NBT: \n\n" + JSON.stringify(signedBook.nbt.pages));
 
                         signedBook.nbt.pages = pages;
 
-                        console.log("Newer NBT: \n\n" + JSON.stringify(signedBook.nbt));
+                        console.log("Newer NBT: \n\n" + JSON.stringify(signedBook.nbt.pages));
 
                         player.give(signedBook);
                         console.log("Gave signed book to player");
