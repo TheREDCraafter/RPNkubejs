@@ -217,7 +217,7 @@ ServerEvents.commandRegistry(event => {
 
                         const pages = item.nbt.pages;
 
-                        let signedBook = Item.of("minecraft:written_book", {
+                        let signedBook = Item.of("minecraft:written_book", 1, {
                             title: `[${stamp}] ${name}`,
                             author: `Rathaus [IC]`,
                             display:{Lore:[`{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}`]}
