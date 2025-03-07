@@ -215,9 +215,9 @@ ServerEvents.commandRegistry(event => {
                             return 0;
                         }
 
-                        const pages = JSON.parse(item.nbt.toString());
+                        const pages = JSON.stringify(item.nbt.pages);
 
-                        player.tell(JSON.stringify(pages));
+                        player.tell(pages);
 
                         let signedBook = Item.of("minecraft:written_book", 1, {
                             title: `[${stamp}] ${name}`,
@@ -234,6 +234,8 @@ ServerEvents.commandRegistry(event => {
                         player.give(signedBook);
                         console.log("Gave signed book to player");
                         player.getMainHandItem().setCount(0);
+
+                        return 1;
                     })
                 )
             )
