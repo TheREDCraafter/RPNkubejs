@@ -215,25 +215,21 @@ ServerEvents.commandRegistry(event => {
                             return 0;
                         }
 
-                        const pages = item.nbt.pages;
+                        const pages = item.nbt.pages.map(page => JSON.stringify(page));
 
                         player.tell(pages);
 
                         let signedBook = Item.of("minecraft:written_book", 1, {
                             title: `[${stamp}] ${name}`,
                             author: `Rathaus [IC]`,
-                            display:{Lore:[`{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}`]}
+                            display:{Lore:[`{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}`]},
+                            pages: pages
                         })
-
-                        console.log("New NBT: \n\n" + signedBook.nbt.pages);
-
-                        signedBook.nbt.pages = pages;
 
                         console.log("Newer NBT: \n\n" + signedBook.nbt.pages);
 
-                        player.give(signedBook);
-                        console.log("Gave signed book to player");
                         player.getMainHandItem().setCount(0);
+                        player.give(signedBook);
 
                         return 1;
                     })
