@@ -218,9 +218,9 @@ ServerEvents.commandRegistry(event => {
                         const pages = item.nbt.pages;
                         player.getMainHandItem().setCount(0);
 
-                        player.tell(pages.toString())
+                        player.tell(pages.toString().replace("\n", "\\n"));
 
-                        player.runCommandSilent(`give @s "minecraft:written_book"{"title": "[${stamp}] ${name}", "author": "Rathaus [IC]", "display": {"Lore": ["{\"text\":\"[${stamp}] | Infinity City\",\"color\":\"dark_purple\",\"italic\":false}"]}, "pages": ${pages.toString()}}`);
+                        player.runCommandSilent(`give @s "minecraft:written_book"{"title": "[${stamp}] ${name}", "author": "Rathaus [IC]", "display": {"Lore": ["{\"text\":\"[${stamp}] | Infinity City\",\"color\":\"dark_purple\",\"italic\":false}"]}, "pages": ${pages.toString().replace("\n", "\\n")}}`);
 
                         return 1;
                     })
