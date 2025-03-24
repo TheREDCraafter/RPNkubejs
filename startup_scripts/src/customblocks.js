@@ -1,14 +1,14 @@
-const { $BlockEntityJS } = require("packages/dev/latvian/mods/kubejs/block/entity/$BlockEntityJS");
-const { $ItemStack } = require("packages/net/minecraft/world/item/$ItemStack");
+// const { $BlockEntityJS } = require("packages/dev/latvian/mods/kubejs/block/entity/$BlockEntityJS");
+// const { $ItemStack } = require("packages/net/minecraft/world/item/$ItemStack");
 
-function checkWoodsawRecipe(_inventory) {
+function checkWoodsawRecipe(inventory) {
     // ONLY FOR INTELLISENSE, REMOVE LATER
-    const entity = new $BlockEntityJS();
-    const inventory = entity.inventory;
+    // const entity = new $BlockEntityJS();
+    // const inventory = entity.inventory;
     // UNTIL HERE
     
-    inventory.getAllItems().forEach(_item => { // AGAIN HERE
-        const item = new $ItemStack();
+    inventory.getAllItems().forEach(item => { // AGAIN HERE
+        // const item = new $ItemStack(); // UNTIL HERE
         if (item.getId() === "minecraft:oak_log") {
             if (item.getCount() >= 10) {
                 inventory.extractItem(inventory.find(item), 10);
