@@ -11,19 +11,18 @@ function checkWoodsawRecipe(inventory) {
         // const item = new $ItemStack(); // UNTIL HERE
         if (item.getId() === "minecraft:oak_log") {
             if (item.getCount() >= 10) {
-                inventory.extractItem(inventory.find(item), 10);
+                inventory.extractItem(inventory.find(item), 10, false);
                 inventory.insertItem("4x minecraft:oak_planks", false);
             }
         }
     })
-
 }
 
 StartupEvents.registry("block", event => {
     event.create("woodsaw")
         .soundType(SoundType.STONE)
         .blockEntity(entityInfo => {
-            entityInfo.inventory(3, 3);
+            entityInfo.inventory(9, 1);
             entityInfo.rightClickOpensInventory();
             entityInfo.serverTick(20, 0, entity => {
                 checkWoodsawRecipe(entity.inventory);
