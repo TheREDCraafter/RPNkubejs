@@ -1,0 +1,5 @@
+FURNACE:
+10 Wheat -> 1 Bread
+
+WOODSAW:
+10 Logs + 1 Coal -> 4 Planks
