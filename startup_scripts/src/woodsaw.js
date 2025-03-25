@@ -28,18 +28,9 @@ function woodsawRecipe(inventory, input, inAmount, fuel, fuelAmount, output, noF
     inventory.extractItem(inventory.find(foundItem), inAmount, false);
     inventory.insertItem(output, false);
 }
-
-function woodsawRecipe(inventory, input, inAmount, output) {
-    woodsawRecipe(inventory, input, inAmount, "minecraft:coal", 1, output, false);
-}
-
-function woodsawRecipe(inventory, input, inAmount, fuel, fuelAmount, output) {
-    woodsawRecipe(inventory, input, inAmount, fuel, fuelAmount, output, false);
-}
-
 function checkWoodsawRecipe(inventory) {
     for (log in logList) {
-        woodsawRecipe(inventory, log, 10, "minecraft:coal", 1, `4x ${getPlankFromLog(log)}`);
+        woodsawRecipe(inventory, log, 10, "minecraft:coal", 1, `4x ${getPlankFromLog(log)}`, false);
     }
 }
 
