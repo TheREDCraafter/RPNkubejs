@@ -4,7 +4,7 @@ function woodsawRecipe(inventory, input, inAmount, fuel, fuelAmount, output, noF
 
     if (!noFuel) {
         inventory.getAllItems().forEach(item => {
-            if (item.getId() === fuel) {
+            if (Ingredient.of(fuel).test(item.getId())) {
                 if (item.getCount() >= fuelAmount) {
                     foundFuel = item;
                 }
@@ -15,7 +15,7 @@ function woodsawRecipe(inventory, input, inAmount, fuel, fuelAmount, output, noF
     }
 
     inventory.getAllItems().forEach(item => {
-        if (item.getId() === input) {
+        if (Ingredient.of(input).test(item.getId())) {
             if (item.getCount() >= inAmount) {
                 foundItem = item;
             }
@@ -38,7 +38,9 @@ function woodsawRecipe(inventory, input, inAmount, fuel, fuelAmount, output) {
 }
 
 function checkWoodsawRecipe(inventory) {
-    woodsawRecipe(inventory, "minecraft:oak_log", 10, "minecraft:coal", 1, "4x minecraft:oak_planks");
+    for (log in logList) {
+        woodsawRecipe(inventory, log, 10, "minecraft:coal", 1, `4x ${getPlankFromLog(log)}`);
+    }
 }
 
 StartupEvents.registry("block", event => {
