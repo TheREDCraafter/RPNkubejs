@@ -1,21 +1,44 @@
-// const { $BlockEntityJS } = require("packages/dev/latvian/mods/kubejs/block/entity/$BlockEntityJS");
-// const { $ItemStack } = require("packages/net/minecraft/world/item/$ItemStack");
+function woodsawRecipe(inventory, input, inAmount, fuel, fuelAmount, output, noFuel) {
+    let foundFuel;
+    let foundItem;
 
-function checkWoodsawRecipe(inventory) {
-    // ONLY FOR INTELLISENSE, REMOVE LATER
-    // const entity = new $BlockEntityJS();
-    // const inventory = entity.inventory;
-    // UNTIL HERE
+    if (!noFuel) {
+        inventory.getAllItems().forEach(item => {
+            if (item.getId() === fuel) {
+                if (item.getCount() >= fuelAmount) {
+                    foundFuel = item;
+                }
+            }
+        })
     
-    inventory.getAllItems().forEach(item => { // AGAIN HERE
-        // const item = new $ItemStack(); // UNTIL HERE
-        if (item.getId() === "minecraft:oak_log") {
-            if (item.getCount() >= 10) {
-                inventory.extractItem(inventory.find(item), 10, false);
-                inventory.insertItem("4x minecraft:oak_planks", false);
+        if (!foundFuel) return;
+    }
+
+    inventory.getAllItems().forEach(item => {
+        if (item.getId() === input) {
+            if (item.getCount() >= inAmount) {
+                foundItem = item;
             }
         }
     })
+
+    if (!foundItem) return;
+
+    if (!noFuel) inventory.extractItem(inventory.find(foundFuel), fuelAmount, false);
+    inventory.extractItem(inventory.find(foundItem), inAmount, false);
+    inventory.insertItem(output, false);
+}
+
+function woodsawRecipe(inventory, input, inAmount, output) {
+    woodsawRecipe(inventory, input, inAmount, "minecraft:coal", 1, output, false);
+}
+
+function woodsawRecipe(inventory, input, inAmount, fuel, fuelAmount, output) {
+    woodsawRecipe(inventory, input, inAmount, fuel, fuelAmount, output, false);
+}
+
+function checkWoodsawRecipe(inventory) {
+    woodsawRecipe(inventory, "minecraft:oak_log", 10, "minecraft:coal", 1, "4x minecraft:oak_planks");
 }
 
 StartupEvents.registry("block", event => {
