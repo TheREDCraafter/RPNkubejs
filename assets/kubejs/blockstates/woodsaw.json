@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "kubejs:block/woodsaw",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "kubejs:block/woodsaw"
+    },
+    "facing=south": {
+      "model": "kubejs:block/woodsaw",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "kubejs:block/woodsaw",
+      "y": 270
+    }
+  }
+}

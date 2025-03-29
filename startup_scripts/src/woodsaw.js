@@ -37,6 +37,14 @@ function checkWoodsawRecipe(inventory) {
 StartupEvents.registry("block", event => {
     event.create("woodsaw")
         .soundType(SoundType.STONE)
+        .renderType("cutout")
+        .property(BlockProperties.HORIZONTAL_FACING)
+        .defaultState(state => {
+            state.setValue(BlockProperties.HORIZONTAL_FACING, Direction.WEST);
+        })
+        .placementState(state => {
+            state.setValue(BlockProperties.HORIZONTAL_FACING, state.horizontalDirection.opposite);
+        });
         .blockEntity(entityInfo => {
             entityInfo.inventory(9, 1);
             entityInfo.rightClickOpensInventory();
