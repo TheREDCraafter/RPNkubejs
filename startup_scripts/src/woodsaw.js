@@ -28,8 +28,9 @@ function woodsawRecipe(inventory, input, inAmount, fuel, fuelAmount, output, noF
     inventory.extractItem(inventory.find(foundItem), inAmount, false);
     inventory.insertItem(output, false);
 }
+
 function checkWoodsawRecipe(inventory) {
-    for (log in logList) {
+    for (let log of logList) {
         woodsawRecipe(inventory, log, 10, "minecraft:coal", 1, `4x ${getPlankFromLog(log)}`, false);
     }
 }
@@ -44,7 +45,7 @@ StartupEvents.registry("block", event => {
         })
         .placementState(state => {
             state.setValue(BlockProperties.HORIZONTAL_FACING, state.horizontalDirection.opposite);
-        });
+        })
         .blockEntity(entityInfo => {
             entityInfo.inventory(9, 1);
             entityInfo.rightClickOpensInventory();
