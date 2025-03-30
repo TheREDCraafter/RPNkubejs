@@ -38,8 +38,10 @@ function checkWoodsawRecipe(inventory) {
 StartupEvents.registry("block", event => {
     event.create("woodsaw")
         .soundType(SoundType.STONE)
-        .renderType("cutout")
+        .renderType("cutout_mipped")
         .property(BlockProperties.HORIZONTAL_FACING)
+        .opaque(false)
+        .notSolid()
         .defaultState(state => {
             state.setValue(BlockProperties.HORIZONTAL_FACING, Direction.WEST);
         })
