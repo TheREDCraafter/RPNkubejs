@@ -32,7 +32,6 @@ function woodsawRecipe(inventory, input, inAmount, fuel, fuelAmount, output, noF
 function checkWoodsawRecipe(inventory) {
     for (let log of logList) {
         woodsawRecipe(inventory, log, 10, "minecraft:coal", 1, `4x ${getPlankFromLog(log)}`, false);
-        console.log(`Checking ${log} for recipe to ${getPlankFromLog(log)}`);
     }
 }
 
