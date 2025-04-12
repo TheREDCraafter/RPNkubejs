@@ -7,4 +7,7 @@ ServerEvents.recipes(event => {
         input: "minecraft:wheat",
         output: "minecraft:bread"
     })
+    event.remove({
+        id: "create:milling/cobblestone"
+    })
 })
