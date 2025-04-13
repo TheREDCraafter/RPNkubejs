@@ -18,6 +18,6 @@ StartupEvents.registry("block", event => {
         .cropSoundType()
         .crop("2x cocaine_leaf", 0.75)
         .crop("cocaine_seeds")
-        .growTick(60)
+        // .growTick(60)
         .item(Item.of("cocaine_seeds"))
 })
