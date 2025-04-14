@@ -6,7 +6,7 @@ ServerEvents.recipes(event => {
     )
     event.shapeless(
         "kubejs:sulfuric_acid",
-        ["meds_and_herbs:bottled_water", "minecraft:glowstone_dust", "minecraft:glowstone_dust"]
+        ["meds_and_herbs:bottled_water", "minecraft:gunpowder", "minecraft:lava_bucket"]
     )
     event.shapeless(
         "kubejs:cocaine",

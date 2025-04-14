@@ -7,6 +7,9 @@ StartupEvents.registry("item", event => {
 
     event.create("hydrochloric_acid").displayName("Salzsäure").maxStackSize(1).texture("kubejs:item/hydrochloric_acid")
     event.create("sulfuric_acid").displayName("Schwefelsäure").maxStackSize(1).texture("kubejs:item/sulfuric_acid")
+    event.create("cocaine_berries").food(food => {
+        food.hunger(2).saturation(0.5).effect("minecraft:poison", 20, 0, 0.4).effect("minecraft:nausea", 20, 0, 0.5)
+    }).displayName("Kokabeeren").texture("kubejs:item/cocaine_berries")
 })
 
 StartupEvents.registry("block", event => {
@@ -18,6 +21,7 @@ StartupEvents.registry("block", event => {
         .texture(3, "kubejs:block/cocaine_plant_3")
         .cropSoundType()
         .crop("kubejs:cocaine_leaf")
+        .crop("kubejs:cocaine_berries", 0.75)
         .growTick(tick => 60.0)
         .item(itemBuilder => {
             itemBuilder.displayName("Kokasamen").texture("kubejs:item/cocaine_plant_seed")
