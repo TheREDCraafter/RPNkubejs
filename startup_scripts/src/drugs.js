@@ -2,13 +2,13 @@ StartupEvents.registry("item", event => {
     event.create("cocaine_leaf").displayName("Kokablatt").texture("kubejs:item/cocaine_leaf")
 
     event.create("cocaine").displayName("Kokain").maxStackSize(8).food(food => {
-        food.effect("minecraft:speed", 2400, 0, 1.0).effect("minecraft:poison", 600, 1, 0.5).effect("minecraft:nausea", 10, 2, 0.2).alwaysEdible()
+        food.effect("minecraft:speed", 2400, 0, 1.0).effect("minecraft:poison", 600, 1, 0.5).effect("minecraft:nausea", 200, 2, 0.2).alwaysEdible()
     }).rarity("rare").texture("kubejs:item/cocaine")
 
     event.create("hydrochloric_acid").displayName("Salzsäure").maxStackSize(1).texture("kubejs:item/hydrochloric_acid")
     event.create("sulfuric_acid").displayName("Schwefelsäure").maxStackSize(1).texture("kubejs:item/sulfuric_acid")
     event.create("cocaine_berries").food(food => {
-        food.hunger(2).saturation(0.5).effect("minecraft:poison", 20, 0, 0.4).effect("minecraft:nausea", 20, 0, 0.5)
+        food.hunger(4).saturation(0.5).effect("minecraft:poison", 400, 0, 0.5).effect("minecraft:nausea", 400, 0, 0.5)
     }).displayName("Kokabeeren").texture("kubejs:item/cocaine_berries")
 })
 
