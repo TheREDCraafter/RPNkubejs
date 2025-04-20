@@ -37,7 +37,7 @@ function checkWoodsawRecipe(inventory) {
 
 StartupEvents.registry("block", event => {
     event.create("woodsaw")
-        .displayName("Holzsäge")
+        //.displayName("Holzsäge")
         .soundType(SoundType.STONE)
         .renderType("cutout_mipped")
         .property(BlockProperties.HORIZONTAL_FACING)
