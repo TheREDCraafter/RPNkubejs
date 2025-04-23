@@ -1,0 +1,21 @@
+{
+    "item.kubejs.woodsaw": "Holzsäge",
+    "item.kubejs.cocaine_leaf": "Kokablatt",
+    "item.kubejs.cocaine": "Kokain",
+    "item.kubejs.hydrochloric_acid": "Salzsäure",
+    "item.kubejs.sulfuric_acid": "Schwefelsäure",
+    "item.kubejs.cocaine_berries": "Kokabeeren",
+    "item.kubejs.cannabis_bud": "Cannabisblüte",
+    "item.kubejs.dried_cannabis_bud": "Getrocknete Cannabisblüte",
+    "item.kubejs.grinded_cannabis": "Gemahlener Cannabis",
+    "item.kubejs.cannabis_extract": "Cannabisextrakt",
+    "item.kubejs.hemp_flower": "Hanfblüte",
+    "item.kubejs.clean_hemp_flower": "Gereinigte Hanfblüte",
+    "item.kubejs.hemp_joint": "Joint",
+    "block.kubejs.cocaine_plant": "Kokapflanze",
+    "item.kubejs.cocaine_plant_seed": "Kokasamen",
+    "block.kubejs.cannabis_plant": "Cannabispflanze",
+    "item.kubejs.cannabis_plant_seed": "Cannabissamen",
+    "block.kubejs.hemp_plant": "Hanfpflanze",
+    "item.kubejs.hemp_plant_seed": "Hanfsamen"
+}
