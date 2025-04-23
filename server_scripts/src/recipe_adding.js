@@ -10,6 +10,30 @@ ServerEvents.recipes(event => {
     )
     event.shapeless(
         Item.of("kubejs:cocaine"),
-        ["kubejs:hydrochloric_acid", "kubejs:cocaine_leaf", "kubejs:cocaine_leaf", "kubejs:cocaine_leaf"]
+        ["kubejs:hydrochloric_acid", "3x kubejs:cocaine_leaf"]
+    )
+    event.campfireCooking(
+        Item.of("kubejs:dried_cannabis_bud"),
+        Item.of("kubejs:cannabis_bud")
+    ).cookingTime(400)
+    event.recipes.create.milling(
+        Item.of("kubejs:grinded_cannabis"),
+        Item.of("kubejs:dried_cannabis_bud")
+    )
+    event.shapeless(
+        Item.of("kubejs:cannabis_extract"),
+        ["3x kubejs:grinded_cannabis", "meds_and_herbs:alcohol_ethanol"]
+    )
+    event.shapeless(
+        Item.of("kubejs:clean_hemp_flower", 3),
+        ["3x kubejs:hemp_flower", "meds_and_herbs:alcohol_ethanol"]
+    )
+    event.shapeless(
+        Item.of("hemp_joint"),
+        ["kubejs:clean_hemp_flower", "kubejs:grinded_cannabis", "minecraft:paper"]
+    )
+    event.shapeless(
+        Item.of("hemp_plant_seed", 8),
+        ["8x kubejs:cannabis_plant_seed", "minecraft:honey_bottle"]
     )
 })
