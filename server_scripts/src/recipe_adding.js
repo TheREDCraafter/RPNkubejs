@@ -29,11 +29,11 @@ ServerEvents.recipes(event => {
         ["3x kubejs:hemp_flower", "meds_and_herbs:alcohol_ethanol"]
     )
     event.shapeless(
-        Item.of("hemp_joint"),
+        Item.of("kubejs:hemp_joint"),
         ["kubejs:clean_hemp_flower", "kubejs:grinded_cannabis", "minecraft:paper"]
     )
     event.shapeless(
-        Item.of("hemp_plant_seed", 8),
+        Item.of("kubejs:hemp_plant_seed", 8),
         ["8x kubejs:cannabis_plant_seed", "minecraft:honey_bottle"]
     )
 })
