@@ -15,13 +15,18 @@ StartupEvents.registry("item", event => {
         food.hunger(3).saturation(0.5).effect("minecraft:slowness", 400, 0, 0.8).effect("minecraft:weakness", 400, 0, 0.6).effect("minecraft:poison", 200, 0, 0.5)
     })
     event.create("dried_cannabis_bud").texture("kubejs:item/cannabis_bud").food(food => {
-        food.hunger(5).saturation(1.5).effect("minecraft:nausea", 300, 1, 0.4).effect("minecraft:regeneration", 100, 1, 0.7)
+        food.hunger(5).saturation(1.5).effect("minecraft:nausea", 300, 1, 0.4).effect("minecraft:regeneration", 200, 1, 1.0)
     })
     event.create("grinded_cannabis").texture("kubejs:item/grinded_cannabis")
     event.create("cannabis_extract").maxStackSize(1).texture("kubejs:item/cannabis_extract").food(food => {
-        food.hunger(3).saturation(0.5).effect("minecraft:slowness", 300, 0, 0.5).effect("minecraft:weakness", 300, 0, 0.5).effect("minecraft:poison", 200, 1, 0.8).alwaysEdible()
+        food.hunger(3).saturation(0.5).effect("minecraft:slowness", 300, 0, 0.5).effect("minecraft:weakness", 300, 0, 0.5).effect("minecraft:poison", 200, 1, 1.0).alwaysEdible()
     })
-
+    event.create("cannabis_dough").texture("kubejs:item/cannabis_dough").food(food => {
+        food.hunger(1).saturation(0.5).effect("minecraft:hunger", 400, 0, 1.0)
+    })
+    event.create("cannabis_bread").texture("kubejs:item/cannabis_bread").food(food => {
+        food.hunger(8).saturation(2.0).effect("minecraft:resistance", 1200, 1, 1.0).effect("minecraft:weakness", 300, 0, 0.4)
+    })
     event.create("hemp_flower").texture("kubejs:item/hemp_flower").food(food => {
         food.hunger(2).saturation(0.5).effect("minecraft:weakness", 300, 0, 1.0).effect("minecraft:poison", 200, 1, 0.8)
     })

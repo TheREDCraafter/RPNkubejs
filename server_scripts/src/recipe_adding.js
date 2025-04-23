@@ -36,4 +36,9 @@ ServerEvents.recipes(event => {
         Item.of("kubejs:hemp_plant_seed", 8),
         ["8x kubejs:cannabis_plant_seed", "minecraft:honey_bottle"]
     )
+    event.shapeless(
+        Item.of("kubejs:cannabis_dough", 3),
+        ["3x create:dough", "kubejs:cannabis_extract"]
+    )
+    event.smelting(Item.of("kubejs:cannabis_bread"), "kubejs:cannabis_dough")
 })
