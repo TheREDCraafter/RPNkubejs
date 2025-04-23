@@ -43,7 +43,7 @@ StartupEvents.registry("block", event => {
         .cropSoundType()
         .crop("kubejs:cocaine_leaf")
         .crop("kubejs:cocaine_berries", 0.75)
-        .growTick(tick => 60.0)
+        .growTick(_tick => 60.0)
         .item(itemBuilder => {
             itemBuilder.displayName("Kokasamen").texture("kubejs:item/cocaine_plant_seed")
         }
@@ -54,6 +54,7 @@ StartupEvents.registry("block", event => {
         .texture(0, "kubejs:block/cannabis_plant_0")
         .texture(1, "kubejs:block/cannabis_plant_1")
         .texture(2, "kubejs:block/cannabis_plant_2")
+        .texture(3, "kubejs:block/cannabis_plant_3")
         .cropSoundType()
         .crop("kubejs:cannabis_bud", 0.75)
         .growTick(_tick => 60.0)
