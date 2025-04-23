@@ -17,5 +17,7 @@
     "block.kubejs.cannabis_plant": "Cannabis Plant",
     "item.kubejs.cannabis_plant_seed": "Cannabis Seeds",
     "block.kubejs.hemp_plant": "Hemp Plant",
-    "item.kubejs.hemp_plant_seed": "Hemp Seeds"
+    "item.kubejs.hemp_plant_seed": "Hemp Seeds",
+    "item.kubejs.cannabis_dough": "Cannabis Dough",
+    "item.kubejs.cannabis_bread": "Cannabis Bread"
 }
