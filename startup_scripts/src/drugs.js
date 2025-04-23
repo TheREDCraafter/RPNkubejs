@@ -18,7 +18,7 @@ StartupEvents.registry("item", event => {
         food.hunger(5).saturation(1.5).effect("minecraft:nausea", 300, 1, 0.4).effect("minecraft:regeneration", 100, 1, 0.7)
     })
     event.create("grinded_cannabis").texture("kubejs:item/grinded_cannabis")
-    event.create("cannabis_extract").texture("kubejs:item/cannabis_extract").food(food => {
+    event.create("cannabis_extract").maxStackSize(1).texture("kubejs:item/cannabis_extract").food(food => {
         food.hunger(3).saturation(0.5).effect("minecraft:slowness", 300, 0, 0.5).effect("minecraft:weakness", 300, 0, 0.5).effect("minecraft:poison", 200, 1, 0.8).alwaysEdible()
     })
 
@@ -28,9 +28,9 @@ StartupEvents.registry("item", event => {
     event.create("clean_hemp_flower").texture("kubejs:item/clean_hemp_flower").food(food => {
         food.hunger(3).saturation(0.8).effect("minecraft:nausea", 200, 0, 0.4).effect("minecraft:speed", 400, 0, 0.8)
     })
-    event.create("hemp_joint").texture("kubejs:item/hemp_joint").food(food => {
-        food.hunger(2).saturation(1.0).effect("meds_and_herbs:ultraviolet_vulnerability", 600, 0, 0.15).effect("meds_and_herbs:adrenaline", 1200, 0, 1.0).effect("minecraft:nausea", 400, 1, 0.4).alwaysEdible()
-    })
+    event.create("hemp_joint").maxStackSize(8).texture("kubejs:item/hemp_joint").food(food => {
+        food.hunger(0).saturation(0).effect("minecraft:resistance", 2400, 0, 1.0).effect("minecraft:nausea", 200, 1, 0.5).effect("minecraft:slowness", 400, 0, 0.4).alwaysEdible()
+    }).rarity("rare")
 })
 
 StartupEvents.registry("block", event => {

@@ -1,7 +1,0 @@
-WOODSAW:
-10 Logs + 1 Coal -> 4 Planks
-
-CRAFTING:
-Sea Salt + Bottled Water + Sulfuric Acid -> Hydrochloric Acid
-Bottled Water + Gunpowder + Bucket of Lava -> Sulfuric Acid
-Hydrochloric Acid + 3 Cocaine Leaf -> Cocaine
