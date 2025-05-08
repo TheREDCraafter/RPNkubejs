@@ -205,10 +205,8 @@ ServerEvents.commandRegistry(event => {
                 .then(Commands.argument("name", Arguments.STRING.create(event))
                     .executes(context => {
 
-                        if (!(context.source.player.getName().getString() in ["PhonedLand39149", "SepticGhG"])) {
-                            context.source.player.tell(Component.red("Wenn du nochmal Dokumente zu fälschen versuchst wirst du gebannt."));
-                            console.warn(`Method documents.js#210 was called on ${context.source.player.getName().getString()}. Further information: 'BITTE DRINGENDST FABIAN BESCHEID GEBEN!'`);
-                            player.runCommandSilent(`tellraw @a {"text":"Method documents.js#210 was called on ${context.source.player.getName().getString()}. Further information: 'BITTE DRINGENDST FABIAN BESCHEID GEBEN!'","color":"red","bold":true}`);
+                        if (!player.getTags().contains("rpn.sign_documents")) {
+                            context.source.player.tell(Component.red("Du hast keine Berechtigung, um diesen Befehl auszuführen!"));
                             return 0;
                         }
 
