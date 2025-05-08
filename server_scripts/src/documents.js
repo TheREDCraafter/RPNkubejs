@@ -205,15 +205,16 @@ ServerEvents.commandRegistry(event => {
                 .then(Commands.argument("name", Arguments.STRING.create(event))
                     .executes(context => {
 
+                        const player = context.source.player;
+
                         if (!player.getTags().contains("rpn.sign_documents")) {
-                            context.source.player.tell(Component.red("Du hast keine Berechtigung, um diesen Befehl auszuführen!"));
+                            player.tell(Component.red("Du hast keine Berechtigung, um diesen Befehl auszuführen!"));
                             return 0;
                         }
 
                         const stamp = Arguments.STRING.getResult(context, "stamp");
                         const name = Arguments.STRING.getResult(context, "name");
 
-                        const player = context.source.player;
                         const item = player.getMainHandItem();
 
                         if (item.getId() !== "minecraft:writable_book") {
