@@ -188,9 +188,12 @@ ServerEvents.commandRegistry(event => {
     );
 });
 
-
 ServerEvents.tick(event => {
     event.server.players.forEach(player => {
+        if (!player.getTags().contains("rpn.tutorial_finished")) {
+            player.runCommandSilent("tag @s add rpn.tutorial_finished");
+            player.runCommandSilent("cutscene 0 @s");
+        }
         if (player.data.cutsceneIndex !== undefined) {
             let pCutsceneIndex = Number(player.data.cutsceneIndex);
             
