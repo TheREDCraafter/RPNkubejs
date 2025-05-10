@@ -237,7 +237,7 @@ ServerEvents.tick(event => {
                 );
 
                 let dx = goal.location[0] - playerPos.x();
-                let dy = goal.location[1] - playerPos.y();
+                let dy = goal.location[1] + 0.6 - playerPos.y();
                 let dz = goal.location[2] - playerPos.z();
                 
                 for (let i = 0; i < particleCount; i++) {
