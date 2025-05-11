@@ -10,7 +10,4 @@ ServerEvents.recipes(event => {
     event.remove({
         id: "create:milling/cobblestone"
     })
-    event.remove({
-        output: "create:millstone"
-    })
 })
