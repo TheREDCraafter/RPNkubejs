@@ -37,6 +37,14 @@ ServerEvents.recipes(event => {
         ["8x kubejs:cannabis_plant_seed", "minecraft:honey_bottle"]
     )
     event.shapeless(
+        Item.of("kubejs:cannabis_plant_seed", 8),
+        ["4x farmersdelight:tomato_seeds", "4x minecraft:beetroot_seeds"]
+    )
+    event.shapeless(
+        Item.of("kubejs:cocaine_plant_seed", 8),
+        ["4x minecraft:pumpkin_seeds", "4x minecraft:wheat_seeds", "meds_and_herbs:opium_seeds"]
+    )
+    event.shapeless(
         Item.of("kubejs:cannabis_dough", 3),
         ["3x create:dough", "kubejs:cannabis_extract"]
     )
