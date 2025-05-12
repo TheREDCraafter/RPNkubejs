@@ -69,7 +69,7 @@ StartupEvents.registry("block", event => {
     )
 
     event.create("hemp_plant", "crop").dropSeed(true)
-        .age(2)
+        .age(3)
         .texture(0, "kubejs:block/hemp_plant_0")
         .texture(1, "kubejs:block/hemp_plant_1")
         .texture(2, "kubejs:block/hemp_plant_2")
