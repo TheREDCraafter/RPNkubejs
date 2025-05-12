@@ -221,14 +221,13 @@ ServerEvents.commandRegistry(event => {
                             player.tell(Component.red("Du musst ein Buch in der Hand halten!"));
                             return 0;
                         }
-
-                        const pages = item.nbt.pages;
-                        player.getMainHandItem().setCount(0);
                         
+                        const pages = item.nbt.pages;
                         const input = pages.toString().replace("\n", "\\\\n");
-                        // console.log(`give @s minecraft:written_book{title: "[${stamp}] ${name}", author: "Rathaus [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
                         player.runCommand(`give @s minecraft:written_book{title: "[${stamp}] ${name}", author: "Rathaus [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
-
+                        
+                        player.getMainHandItem().setCount(0);
+                        // console.log(`give @s minecraft:written_book{title: "[${stamp}] ${name}", author: "Rathaus [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
                         return 1;
                     })
                 )
