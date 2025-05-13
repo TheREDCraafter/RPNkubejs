@@ -64,17 +64,17 @@ StartupEvents.registry("block", event => {
         .crop("kubejs:cannabis_bud", 0.75)
         .growTick(_tick => 60.0)
         .item(itemBuilder => {
-            itemBuilder.texture("kubejs:item/cannabis_plant_seed")
+            itemBuilder.tag().texture("kubejs:item/cannabis_plant_seed")
         }
     )
 
     event.create("hemp_plant", "crop").dropSeed(true)
-        .age(3)
+        .age(2)
         .texture(0, "kubejs:block/hemp_plant_0")
         .texture(1, "kubejs:block/hemp_plant_1")
         .texture(2, "kubejs:block/hemp_plant_2")
         .cropSoundType()
-        .crop("kubejs:hemp_flowers", 0.75)
+        .crop("kubejs:hemp_flower", 0.75)
         .growTick(_tick => 60.0)
         .item(itemBuilder => {
             itemBuilder.texture("kubejs:item/hemp_plant_seed")

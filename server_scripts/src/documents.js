@@ -204,7 +204,6 @@ ServerEvents.commandRegistry(event => {
             .then(Commands.argument("stamp", Arguments.STRING.create(event))
                 .then(Commands.argument("name", Arguments.STRING.create(event))
                     .executes(context => {
-
                         const player = context.source.player;
 
                         if (!player.getTags().contains("rpn.sign_documents")) {
@@ -233,5 +232,4 @@ ServerEvents.commandRegistry(event => {
                 )
             )
     );
-
 });
