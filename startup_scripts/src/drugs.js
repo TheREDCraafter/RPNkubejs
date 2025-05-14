@@ -64,7 +64,7 @@ StartupEvents.registry("block", event => {
         .crop("kubejs:cannabis_bud", 0.75)
         .growTick(_tick => 60.0)
         .item(itemBuilder => {
-            itemBuilder.tag().texture("kubejs:item/cannabis_plant_seed")
+            itemBuilder.texture("kubejs:item/cannabis_plant_seed")
         }
     )
 
