@@ -232,6 +232,39 @@ ServerEvents.commandRegistry(event => {
             )
     );
     event.register(
+        Commands.literal("sign_police")
+            .then(Commands.argument("stamp", Arguments.STRING.create(event))
+                .then(Commands.argument("name", Arguments.STRING.create(event))
+                    .executes(context => {
+                        const player = context.source.player;
+
+                        if (!player.getTags().contains("rpn.sign_documents_police")) {
+                            player.tell(Component.red("Du hast keine Berechtigung, diesen Befehl auszuführen!"));
+                            return 0;
+                        }
+
+                        const stamp = Arguments.STRING.getResult(context, "stamp");
+                        const name = Arguments.STRING.getResult(context, "name");
+
+                        const item = player.getMainHandItem();
+
+                        if (item.getId() !== "minecraft:writable_book") {
+                            player.tell(Component.red("Du musst ein Buch in der Hand halten!"));
+                            return 0;
+                        }
+                        
+                        const pages = item.nbt.pages;
+                        const input = pages.toString().replace("\n", "\\\\n");
+                        player.runCommand(`give @s minecraft:written_book{title: "[${stamp}] ${name}", author: "Polizei [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
+                        
+                        // player.getMainHandItem().setCount(0);
+                        // console.log(`give @s minecraft:written_book{title: "[${stamp}] ${name}", author: "Polizei [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
+                        return 1;
+                    })
+                )
+            )
+    );
+    event.register(
         Commands.literal("unsign")
             .executes( context => {
                 const player = context.source.player;
