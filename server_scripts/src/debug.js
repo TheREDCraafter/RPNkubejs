@@ -27,12 +27,4 @@ ServerEvents.commandRegistry(event => {
             )
         )
     );
-
-    event.register(Commands.literal("flan")
-        .then(Commands.literal("trapped")
-            .executes(context => {
-                
-            })
-        )
-    );
 });
