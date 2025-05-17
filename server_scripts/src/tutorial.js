@@ -203,6 +203,7 @@ ServerEvents.tick(event => {
         if (!player.getTags().contains("rpn.tutorial_finished")) {
             event.server.runCommandSilent(`tag ${player.name.string} add rpn.tutorial_finished`);
             event.server.runCommandSilent(`cutscene 0 ${player.name.string}`);
+            event.server.runCommandSilent(`team join Player ${player.name.string}`);
         }
         if (player.data.cutsceneIndex !== undefined) {
             let pCutsceneIndex = Number(player.data.cutsceneIndex);
