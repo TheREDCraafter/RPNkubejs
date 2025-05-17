@@ -223,7 +223,11 @@ ServerEvents.commandRegistry(event => {
                         const pages = item.nbt.pages;
                         const input = pages.toString().replace("\n", "\\\\n");
                         //player.runCommand(`give @s minecraft:written_book{title: "[${stamp}] ${name}", author: "Rathaus [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
-                        context.source.player.getServer().runCommandSilent(`give ${player.name.string} minecraft:written_book{title: "[${stamp}] ${name}", author: "Rathaus [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
+                        if (stamp === "") {
+                            context.source.player.getServer().runCommandSilent(`give ${player.name.string} minecraft:written_book{title: "${name}", author: "Rathaus [IC]", display: {Lore:['{"text":"Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
+                        } else {
+                            context.source.player.getServer().runCommandSilent(`give ${player.name.string} minecraft:written_book{title: "[${stamp}] ${name}", author: "Rathaus [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
+                        }
                         
                         // player.getMainHandItem().setCount(0);
                         // console.log(`give @s minecraft:written_book{title: "[${stamp}] ${name}", author: "Rathaus [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
