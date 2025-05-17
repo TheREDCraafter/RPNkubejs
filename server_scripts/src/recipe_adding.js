@@ -6,6 +6,14 @@ ServerEvents.recipes(event => {
     )
     event.shapeless(
         Item.of("kubejs:sulfuric_acid"),
+        ["butcher:sulfuricacid"]
+    )
+    event.shapeless(
+        Item.of("butcher:sulfuricacid"),
+        ["kubejs:sulfuric_acid"]
+    )
+    event.shapeless(
+        Item.of("kubejs:sulfuric_acid"),
         ["meds_and_herbs:bottled_water", "minecraft:gunpowder", "minecraft:lava_bucket"]
     )
     event.shapeless(
