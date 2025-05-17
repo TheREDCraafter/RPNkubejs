@@ -138,8 +138,8 @@ const goals = [
 ];
 
 function id_card(player) {
-    player.getServer().server.runCommandSilent(`tag ${player.name.string} add rpn.continuescene`);
-    player.getServer().server.runCommandSilent(`perso ${player.name.string}`);
+    player.getServer().runCommandSilent(`tag ${player.name.string} add rpn.continuescene`);
+    player.getServer().runCommandSilent(`perso ${player.name.string}`);
 }
 
 function distanceBetween(pos1, pos2) {
