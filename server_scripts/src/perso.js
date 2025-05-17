@@ -3,13 +3,13 @@ const copyx = -503;
 const copyy = 74;
 const copyz = 91;
 
-function startPersonalausweisCreation(player, server) 
+function startPersonalausweisCreation(player) 
 {
 	if (player.getTags().contains("rpn.perso")){
 		player.tell(Component.yellow("Sie haben schon einen Personalausweis!"));
 		return;
 	}
-	server.runCommandSilent(`tag ${player.name.string} add rpn.perso`);
+	player.getServer().runCommandSilent(`tag ${player.name.string} add rpn.perso`);
     player.tell(Component.yellow('Willkommen im Rathaus! Bitte gib deine Daten ein.'));
     player.tell(Component.yellow('Das wird deine Identität für den Rest des Servers sein, also denk gut darüber nach.'));
     askForName(player);
@@ -119,7 +119,7 @@ ServerEvents.commandRegistry(event => {
             .then(Commands.argument('player', Arguments.PLAYER.create(event))
                 .executes(context => {
                     const player = Arguments.PLAYER.getResult(context, 'player');
-                    startPersonalausweisCreation(player, event.server);
+                    startPersonalausweisCreation(player);
                     return 1;
                 })
             )
