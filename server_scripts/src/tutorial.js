@@ -22,8 +22,9 @@ const goals = [
         after: [
             "Befolge jetzt die Anweisungen im Chat, um deinen Personalausweis zu bekommen."
         ],
-        next: false, // Pause for the ID card
-        after_action: (player) => { id_card(player); }
+        next: false,
+        after_action: (player) => { id_card(player); },
+        pre_action: (player) => { player.getServer().runCommandSilent(`execute as ${player.name.string} run doc tutorial`); }
     },
     {
         location: [-440.5, 67.5, 37.5],
@@ -133,7 +134,7 @@ const goals = [
             "Schließlich ist hier der Hafen mit einem schwarzen Brett für noch mehr Jobangebote.",
             "Das war's mit der Stadttour. Viel Spaß auf dem Server!"
         ],
-        next: false // No further quests after this one.
+        next: false
     }
 ];
 
