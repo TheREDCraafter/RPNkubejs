@@ -154,10 +154,6 @@ Firmenadresse(n):\"]}`);
     player.give(firma)
 }
 
-function giveTutorial(player) {
-    player.getServer().runCommandSilent(`give ${player.name.string} minecraft:written_book{pages:['{"text":"-------------------\\nServertutorial\\n-------------------\\n\\nWillkommen auf dem Server!\\n\\nAls Erstes solltest du dem Tutorial folgen.\\n\\nWaypoints kannst du dir mit \'B\' setzen."}', '{"text":"Wir empfehlen dir, dem Discord beizutreten. Benutze dafür den Command /discord.\\n\\nDort siehst du das Serverregelwerk und die Verfassung unseres Staates, Infinity.\\n\\n"}', '{"text":"Du solltest es vermeiden, fremde GrundstÜcke zu betreten. Der Besitzer darf auf dich schießen, wenn du nicht auf seinem Grundst�ck sein sollst.\\n\\nWir empfehlen dir außerdem, deine Keybinds anzupassen."}', '{"text":"Zu Beginn bekommst du 16 Äpfel und 500$. Das sollte auf jeden Fall reichen, bis du beim Bioladen Essen kaufen kannst.\\n\\nAlles ingame-bezogene sollte auch im Ingame Voice Chat geregelt werden. Diesen öffnest du mit \'V\'."}', '{"text":"Wenn du eine Voice Chat Gruppe erstellst, stelle sie bitte auf \'Open\'. Andere Gruppenarten sind verboten.\\n\\nSollte dir jemand Probleme machen, oder du sonst Fragen haben, kannst du im Polizeirevier Hilfe bekommen. "}', '{"text":"Wir wünschen dir noch viel Spaß auf dem Server"}'], title: "Servertutorial", author: "Rathaus [IC]", display: {Lore: ['{"text":"Infinity City","color":"dark_purple","italic":false}']}}`);
-}
-
 ServerEvents.commandRegistry(event => {
     const { commands: Commands, arguments: Arguments } = event;
 
@@ -199,13 +195,6 @@ ServerEvents.commandRegistry(event => {
                     return 1;
                 })
             )
-            .then(Commands.literal("tutorial")
-                .executes(context => {
-                    const player = context.source.player;
-                    giveTutorial(player);
-                    return 1;
-                })
-            )
     );
 
     event.register(
@@ -231,7 +220,8 @@ ServerEvents.commandRegistry(event => {
                         }
                         
                         const pages = item.nbt.pages;
-                        const input = pages.toString().replace("\n", "\\\\n");
+                        const input = pages.toString().replace("\n", "\\
+");
                         //player.runCommand(`give @s minecraft:written_book{title: "[${stamp}] ${name}", author: "Rathaus [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
                         if (stamp === "") {
                             context.source.player.getServer().runCommandSilent(`give ${player.name.string} minecraft:written_book{title: "${name}", author: "Rathaus [IC]", display: {Lore:['{"text":"Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
@@ -269,7 +259,8 @@ ServerEvents.commandRegistry(event => {
                         }
                         
                         const pages = item.nbt.pages;
-                        const input = pages.toString().replace("\n", "\\\\n");
+                        const input = pages.toString().replace("\n", "\\
+");
                         //player.runCommand(`give @s minecraft:written_book{title: "[${stamp}] ${name}", author: "Polizei [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
                         context.source.player.getServer().runCommandSilent(`give ${player.name.string} minecraft:written_book{title: "[${stamp}] ${name}", author: "Polizei [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
                         
@@ -301,7 +292,8 @@ ServerEvents.commandRegistry(event => {
 
                 
                 let pageStrings = arrayContent.split(/',(?![^"]*"\s*:)/).map(s =>
-                s.trim().replace(/^'/, "").replace(/'$/, "").replace(/\n/g, "\\n")
+                s.trim().replace(/^'/, "").replace(/'$/, "").replace(/\n/g, "
+")
                 );
 
                 
