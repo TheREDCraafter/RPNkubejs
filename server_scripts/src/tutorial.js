@@ -221,7 +221,6 @@ ServerEvents.tick(event => {
             let distance = distanceBetween(playerPos, goal.location);
 
             if (distance <= 3) {
-                
                 goal.after.forEach(message => player.tell(Component.green(message)));
 
                 if (goal.after_action) { goal.after_action(player); }
