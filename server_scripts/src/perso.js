@@ -3,13 +3,13 @@ const copyx = -503;
 const copyy = 74;
 const copyz = 91;
 
-function startPersonalausweisCreation(player) 
+function startPersonalausweisCreation(player, server) 
 {
 	if (player.getTags().contains("rpn.perso")){
 		player.tell(Component.yellow("Sie haben schon einen Personalausweis!"));
 		return;
 	}
-	player.runCommandSilent("tag @s add rpn.perso");
+	server.runCommandSilent(`tag ${player.name.string} add rpn.perso`);
     player.tell(Component.yellow('Willkommen im Rathaus! Bitte gib deine Daten ein.'));
     player.tell(Component.yellow('Das wird deine Identität für den Rest des Servers sein, also denk gut darüber nach.'));
     askForName(player);
@@ -91,12 +91,12 @@ function givePersonalausweis(player, data) {
 
     // HACK: Just put the book into the barrel by command
     player.getServer().scheduleInTicks(5, () => {
-        player.runCommandSilent(`execute in minecraft:overworld run item replace block ${copyx} ${copyy} ${copyz} container.0 with ${book.getId()}${book.getNbt()}`);
+        player.getServer().runCOmmandSilent(`execute in minecraft:overworld run item replace block ${copyx} ${copyy} ${copyz} container.0 with ${book.getId()}${book.getNbt()}`);
     })
 
     if (player.getTags().contains("rpn.continuescene")){
-        player.runCommandSilent("tag @s remove rpn.continuescene");
-        player.runCommandSilent("cutscene 1 @p");
+        player.getServer().runCommandSilent(`tag ${player.name.string} remove rpn.continuescene`);
+        player.getServer().runCommandSilent(`cutscene 1 ${player.name.string}`);
     }
 }
 
@@ -119,7 +119,7 @@ ServerEvents.commandRegistry(event => {
             .then(Commands.argument('player', Arguments.PLAYER.create(event))
                 .executes(context => {
                     const player = Arguments.PLAYER.getResult(context, 'player');
-                    startPersonalausweisCreation(player);
+                    startPersonalausweisCreation(player, event.server);
                     return 1;
                 })
             )

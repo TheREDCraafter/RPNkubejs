@@ -138,8 +138,8 @@ const goals = [
 ];
 
 function id_card(player) {
-    player.runCommandSilent("tag @s add rpn.continuescene");
-    player.runCommandSilent("perso @s");
+    player.getServer().server.runCommandSilent(`tag ${player.name.string} add rpn.continuescene`);
+    player.getServer().server.runCommandSilent(`perso ${player.name.string}`);
 }
 
 function distanceBetween(pos1, pos2) {
@@ -191,8 +191,8 @@ ServerEvents.commandRegistry(event => {
 ServerEvents.tick(event => {
     event.server.players.forEach(player => {
         if (!player.getTags().contains("rpn.tutorial_finished")) {
-            player.runCommandSilent("tag @s add rpn.tutorial_finished");
-            player.runCommandSilent("cutscene 0 @s");
+            event.server.runCommandSilent(`tag ${player.name.string} add rpn.tutorial_finished`);
+            event.server.runCommandSilent(`cutscene 0 ${player.name.string}`);
         }
         if (player.data.cutsceneIndex !== undefined) {
             let pCutsceneIndex = Number(player.data.cutsceneIndex);
@@ -246,7 +246,7 @@ ServerEvents.tick(event => {
                     let y = playerPos.y() + dy * t + 0.3;
                     let z = playerPos.z() + dz * t;
                     
-                    player.runCommandSilent(`particle minecraft:dust 0 1 0 0.7 ${x} ${y} ${z} 0 0 0 0.01 1 force @s`);
+                    event.server.runCommandSilent(`particle minecraft:dust 0 1 0 0.7 ${x} ${y} ${z} 0 0 0 0.01 1 force ${player.name.string}`);
                 }
             }
         }
