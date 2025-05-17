@@ -186,6 +186,15 @@ ServerEvents.commandRegistry(event => {
                 )
             )
     );
+
+    event.register(
+        Commands.literal("discord")
+            .executes(context => {
+                const player = context.source.player;
+                player.tell(Component.green("Hier ist der Link zum Discord: https://discord.gg/invite/JRQdV5BPjY"));
+                return 1;
+            })
+    );
 });
 
 ServerEvents.tick(event => {

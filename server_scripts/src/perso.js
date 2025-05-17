@@ -91,10 +91,13 @@ function givePersonalausweis(player, data) {
 
     // HACK: Just put the book into the barrel by command
     player.getServer().scheduleInTicks(5, () => {
-        player.getServer().runCOmmandSilent(`execute in minecraft:overworld run item replace block ${copyx} ${copyy} ${copyz} container.0 with ${book.getId()}${book.getNbt()}`);
+        player.getServer().runCommandSilent(`execute in minecraft:overworld run item replace block ${copyx} ${copyy} ${copyz} container.0 with ${book.getId()}${book.getNbt()}`);
     })
 
     if (player.getTags().contains("rpn.continuescene")){
+        player.give(Item.of("lightmanscurrency:wallet_leather"));
+        player.give(Item.of("lightmanscurrency:coin_emerald", 5));
+        player.give(Item.of("minecraft:apple", 16));
         player.getServer().runCommandSilent(`tag ${player.name.string} remove rpn.continuescene`);
         player.getServer().runCommandSilent(`cutscene 1 ${player.name.string}`);
     }
