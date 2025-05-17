@@ -152,6 +152,7 @@ Angaben zur Firma
 Firmenadresse(n):\"]}`);
 
     player.give(firma)
+
 }
 
 ServerEvents.commandRegistry(event => {
@@ -220,8 +221,7 @@ ServerEvents.commandRegistry(event => {
                         }
                         
                         const pages = item.nbt.pages;
-                        const input = pages.toString().replace("\n", "\\
-");
+                        const input = pages.toString().replace("\n", "\\\\n");
                         //player.runCommand(`give @s minecraft:written_book{title: "[${stamp}] ${name}", author: "Rathaus [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
                         if (stamp === "") {
                             context.source.player.getServer().runCommandSilent(`give ${player.name.string} minecraft:written_book{title: "${name}", author: "Rathaus [IC]", display: {Lore:['{"text":"Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
@@ -259,8 +259,7 @@ ServerEvents.commandRegistry(event => {
                         }
                         
                         const pages = item.nbt.pages;
-                        const input = pages.toString().replace("\n", "\\
-");
+                        const input = pages.toString().replace("\n", "\\\\n");
                         //player.runCommand(`give @s minecraft:written_book{title: "[${stamp}] ${name}", author: "Polizei [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
                         context.source.player.getServer().runCommandSilent(`give ${player.name.string} minecraft:written_book{title: "[${stamp}] ${name}", author: "Polizei [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
                         
@@ -292,8 +291,7 @@ ServerEvents.commandRegistry(event => {
 
                 
                 let pageStrings = arrayContent.split(/',(?![^"]*"\s*:)/).map(s =>
-                s.trim().replace(/^'/, "").replace(/'$/, "").replace(/\n/g, "
-")
+                s.trim().replace(/^'/, "").replace(/'$/, "").replace(/\n/g, "\\n")
                 );
 
                 
