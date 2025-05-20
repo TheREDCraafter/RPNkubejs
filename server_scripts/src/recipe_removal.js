@@ -45,7 +45,6 @@ function getPlankFromLog(logId) {
     if (logToPlankMap.hasOwnProperty(logId)) {
         return logToPlankMap[logId]
     }
- 
     
     const parts = logId.split(":")
     const modId = parts[0]
