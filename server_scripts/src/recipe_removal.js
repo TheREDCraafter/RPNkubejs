@@ -45,7 +45,8 @@ function getPlankFromLog(logId) {
     if (logToPlankMap.hasOwnProperty(logId)) {
         return logToPlankMap[logId]
     }
-  
+ 
+    
     const parts = logId.split(":")
     const modId = parts[0]
     let woodType = parts[1].replace("stripped_", "").replace("_log", "").replace("_stem", "")
