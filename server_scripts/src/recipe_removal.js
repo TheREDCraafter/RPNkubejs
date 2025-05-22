@@ -57,23 +57,23 @@ function getPlankFromLog(logId) {
     return `${modId}:${woodType}_planks`
 }
 
-ServerEvents.recipes(event => {
-    event.remove({
+ServerEvents.postInit(event => {
+    event.server.recipes.remove({
         input: "#minecraft:logs",
         output: "#minecraft:planks"
     });
     for (const log of logList) {
-        event.remove({
+        event.server.recipes.remove({
             input: log,
             output: getPlankFromLog(log)
         })
         console.log("Removed recipe for " + log + " to " + getPlankFromLog(log));
     }
-    event.remove({
+    event.server.recipes.remove({
         input: "minecraft:wheat",
         output: "minecraft:bread"
     })
-    event.remove({
+    event.server.recipes.remove({
         id: "create:milling/cobblestone"
     })
 })
