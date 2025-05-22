@@ -67,10 +67,6 @@ ServerEvents.recipes(event => {
             input: log,
             output: getPlankFromLog(log)
         })
-        event.remove({
-            input: "#" + log + "s",
-            output: "#" + getPlankFromLog(log)
-        })
         console.log("Removed recipe for " + log + " to " + getPlankFromLog(log));
     }
     event.remove({
