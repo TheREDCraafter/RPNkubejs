@@ -57,7 +57,7 @@ function getPlankFromLog(logId) {
     return `${modId}:${woodType}_planks`
 }
 
-ServerEvents.postInit(event => {
+ServerEvents.afterRecipes(event => {
     event.server.recipes.remove({
         input: "#minecraft:logs",
         output: "#minecraft:planks"
