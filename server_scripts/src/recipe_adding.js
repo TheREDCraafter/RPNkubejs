@@ -56,5 +56,9 @@ ServerEvents.recipes(event => {
         Item.of("kubejs:cannabis_dough", 3),
         ["3x create:dough", "kubejs:cannabis_extract"]
     )
+    event.shapeless(
+        Item.of("kubejs:fingerprint_kit", 1),
+        ["minecraft:brush", "minecraft:paper"]
+    )
     event.smelting(Item.of("kubejs:cannabis_bread"), "kubejs:cannabis_dough")
 })
