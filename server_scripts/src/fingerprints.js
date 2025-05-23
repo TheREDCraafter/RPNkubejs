@@ -27,7 +27,7 @@ function escapeForLore(text) {
 
 ServerEvents.tick(event => {
   if (!event.server.persistentData.get("fingerprint")) {
-    event.server.persistentData.set("fingerprint", new java.util.HashMap());
+    event.server.persistentData.fingerprint = new java.util.HashMap();
   }
 
   event.server.players.forEach(player => {
