@@ -26,19 +26,19 @@ function escapeForLore(text) {
 }
 
 ServerEvents.tick(event => {
-  if (!event.server.persistentData.get("fingerprint")) {
-    event.server.persistentData.fingerprint = new java.util.HashMap();
+  if (!event.server.persistentData.fingerprint) {
+    event.server.persistentData.fingerprint = {};
   }
 
   event.server.players.forEach(player => {
-    if (!player.persistentData.get("fingerprint")) {
-      player.persistentData.set("fingerprint", obfuscate(player.name.string));
+    if (!player.persistentData.fingerprint) {
+      player.persistentData.fingerprint = obfuscate(player.name.string);
     }
   });
 });
 
 BlockEvents.rightClicked(event => {
-  const fingerprintMap = event.server.persistentData.get("fingerprint");
+  const fingerprintMap = event.server.persistentData.fingerprint;
   if (!fingerprintMap) {
     event.player.tell("Fingerprint storage not initialized yet.");
     return;
@@ -46,7 +46,7 @@ BlockEvents.rightClicked(event => {
 
   if (event.player.getMainHandItem().getId() === "kubejs:fingerprint_kit") {
     const posStr = blockPosToString(event.getBlock().getPos());
-    let fingerprintData = fingerprintMap.get(posStr);
+    let fingerprintData = fingerprintMap[posStr];
     if (fingerprintData == null) fingerprintData = "none";
     fingerprintData = escapeForLore(fingerprintData);
 
@@ -55,7 +55,7 @@ BlockEvents.rightClicked(event => {
     event.server.runCommandSilent(`/give ${event.player.name.string} kubejs:used_fingerprint_kit{display:{Lore:['{"text":"${posStr} :: ${fingerprintData}"}']}}`);
   } else {
     const posStr = blockPosToString(event.getBlock().getPos());
-    const playerFingerprint = event.player.persistentData.get("fingerprint");
-    fingerprintMap.put(posStr, playerFingerprint);
+    const playerFingerprint = event.player.persistentData.fingerprint;
+    fingerprintMap[posStr] = playerFingerprint;
   }
 });
