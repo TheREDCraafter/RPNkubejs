@@ -2,6 +2,6 @@
   "predicate": {
     "items": "minecraft:spider_eye"
   },
-  "shader": "minecraft:shaders/post/spider.json",
+  "shader": "minecraft:shaders/post/invert.json", 
   "attachment_tint": "FFBBAA"
 }
