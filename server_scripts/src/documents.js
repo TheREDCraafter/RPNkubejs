@@ -235,6 +235,7 @@ ServerEvents.commandRegistry(event => {
             .then(Commands.argument("name", Arguments.STRING.create(event))
                 .executes(context => {
                     sign_document(Commands, Arguments, context, "rpn.sign_documents", "Rathaus [IC]");
+                    return 1;
                 })
             )
         )
@@ -245,6 +246,7 @@ ServerEvents.commandRegistry(event => {
                 .then(Commands.argument("name", Arguments.STRING.create(event))
                     .executes(context => {
                         sign_document(Commands, Arguments, context, "rpn.sign_documents_police", "Polizei [IC]");
+                        return 1;
                     })
                 )
             )
