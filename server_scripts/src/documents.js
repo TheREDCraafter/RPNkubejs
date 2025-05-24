@@ -154,6 +154,37 @@ Firmenadresse(n):\"]}`);
     player.give(firma)
 
 }
+function sign_document(Commands, Arguments, context, tag, author) {
+    const player = context.source.player;
+
+    if (!player.getTags().contains(tag)) {
+        player.tell(Component.red("Du hast keine Berechtigung, diesen Befehl auszuführen!"));
+        return 0;
+    }
+
+    const stamp = Arguments.STRING.getResult(context, "stamp");
+    const name = Arguments.STRING.getResult(context, "name");
+
+    const item = player.getMainHandItem();
+
+    if (item.getId() !== "minecraft:writable_book") {
+        player.tell(Component.red("Du musst ein Buch in der Hand halten!"));
+        return 0;
+    }
+    
+    const pages = item.nbt.pages;
+    const input = pages.toString().replace("\n", "\\\\n");
+    //player.runCommand(`give @s minecraft:written_book{title: "[${stamp}] ${name}", author: "Rathaus [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
+    if (stamp === "") {
+        context.source.player.getServer().runCommandSilent(`give ${player.name.string} minecraft:written_book{title: "${name}", author: "${author}", display: {Lore:['{"text":"Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
+    } else {
+        context.source.player.getServer().runCommandSilent(`give ${player.name.string} minecraft:written_book{title: "[${stamp}] ${name}", author: "${author}", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
+    }
+    
+    // player.getMainHandItem().setCount(0);
+    // console.log(`give @s minecraft:written_book{title: "[${stamp}] ${name}", author: "Rathaus [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
+    return 1;
+}
 
 ServerEvents.commandRegistry(event => {
     const { commands: Commands, arguments: Arguments } = event;
@@ -200,109 +231,57 @@ ServerEvents.commandRegistry(event => {
 
     event.register(
         Commands.literal("sign")
-            .then(Commands.argument("stamp", Arguments.STRING.create(event))
-                .then(Commands.argument("name", Arguments.STRING.create(event))
-                    .executes(context => {
-                        const player = context.source.player;
-
-                        if (!player.getTags().contains("rpn.sign_documents")) {
-                            player.tell(Component.red("Du hast keine Berechtigung, diesen Befehl auszuführen!"));
-                            return 0;
-                        }
-
-                        const stamp = Arguments.STRING.getResult(context, "stamp");
-                        const name = Arguments.STRING.getResult(context, "name");
-
-                        const item = player.getMainHandItem();
-
-                        if (item.getId() !== "minecraft:writable_book") {
-                            player.tell(Component.red("Du musst ein Buch in der Hand halten!"));
-                            return 0;
-                        }
-                        
-                        const pages = item.nbt.pages;
-                        const input = pages.toString().replace("\n", "\\\\n");
-                        //player.runCommand(`give @s minecraft:written_book{title: "[${stamp}] ${name}", author: "Rathaus [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
-                        if (stamp === "") {
-                            context.source.player.getServer().runCommandSilent(`give ${player.name.string} minecraft:written_book{title: "${name}", author: "Rathaus [IC]", display: {Lore:['{"text":"Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
-                        } else {
-                            context.source.player.getServer().runCommandSilent(`give ${player.name.string} minecraft:written_book{title: "[${stamp}] ${name}", author: "Rathaus [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
-                        }
-                        
-                        // player.getMainHandItem().setCount(0);
-                        // console.log(`give @s minecraft:written_book{title: "[${stamp}] ${name}", author: "Rathaus [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
-                        return 1;
-                    })
-                )
+        .then(Commands.argument("stamp", Arguments.STRING.create(event))
+            .then(Commands.argument("name", Arguments.STRING.create(event))
+                .executes(context => {
+                    sign_document(Commands, Arguments, context, "rpn.sign_documents", "Rathaus [IC]");
+                })
             )
+        )
     );
     event.register(
         Commands.literal("sign_police")
             .then(Commands.argument("stamp", Arguments.STRING.create(event))
                 .then(Commands.argument("name", Arguments.STRING.create(event))
                     .executes(context => {
-                        const player = context.source.player;
-
-                        if (!player.getTags().contains("rpn.sign_documents_police")) {
-                            player.tell(Component.red("Du hast keine Berechtigung, diesen Befehl auszuführen!"));
-                            return 0;
-                        }
-
-                        const stamp = Arguments.STRING.getResult(context, "stamp");
-                        const name = Arguments.STRING.getResult(context, "name");
-
-                        const item = player.getMainHandItem();
-
-                        if (item.getId() !== "minecraft:writable_book") {
-                            player.tell(Component.red("Du musst ein Buch in der Hand halten!"));
-                            return 0;
-                        }
-                        
-                        const pages = item.nbt.pages;
-                        const input = pages.toString().replace("\n", "\\\\n");
-                        //player.runCommand(`give @s minecraft:written_book{title: "[${stamp}] ${name}", author: "Polizei [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
-                        context.source.player.getServer().runCommandSilent(`give ${player.name.string} minecraft:written_book{title: "[${stamp}] ${name}", author: "Polizei [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
-                        
-                        // player.getMainHandItem().setCount(0);
-                        // console.log(`give @s minecraft:written_book{title: "[${stamp}] ${name}", author: "Polizei [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
-                        return 1;
+                        sign_document(Commands, Arguments, context, "rpn.sign_documents_police", "Polizei [IC]");
                     })
                 )
             )
     );
-    event.register(
-        Commands.literal("unsign")
-            .executes( context => {
-                const player = context.source.player;
-                if (!player.getTags().contains("rpn.sign_documents")) {
-                    player.tell(Component.red("Du hast keine Berechtigung, diesen Befehl auszuführen!"));
-                    return 0;
-                }
-                const item = player.getMainHandItem();
-                if (item.getId() !== "minecraft:written_book") {
-                    player.tell(Component.red("Du musst ein Buch in der Hand halten!"));
-                    return 0;
-                }
-                const input = item.nbt.pages;
+    // event.register(
+    //     Commands.literal("unsign")
+    //         .executes( context => {
+    //             const player = context.source.player;
+    //             if (!player.getTags().contains("rpn.sign_documents")) {
+    //                 player.tell(Component.red("Du hast keine Berechtigung, diesen Befehl auszuführen!"));
+    //                 return 0;
+    //             }
+    //             const item = player.getMainHandItem();
+    //             if (item.getId() !== "minecraft:written_book") {
+    //                 player.tell(Component.red("Du musst ein Buch in der Hand halten!"));
+    //                 return 0;
+    //             }
+    //             const input = item.nbt.pages;
                 
-                let start = input.indexOf('[');
-                let end = input.lastIndexOf(']');
-                let arrayContent = input.slice(start + 1, end);
+    //             let start = input.indexOf('[');
+    //             let end = input.lastIndexOf(']');
+    //             let arrayContent = input.slice(start + 1, end);
 
                 
-                let pageStrings = arrayContent.split(/',(?![^"]*"\s*:)/).map(s =>
-                s.trim().replace(/^'/, "").replace(/'$/, "").replace(/\n/g, "\\n")
-                );
+    //             let pageStrings = arrayContent.split(/',(?![^"]*"\s*:)/).map(s =>
+    //             s.trim().replace(/^'/, "").replace(/'$/, "").replace(/\n/g, "\\n")
+    //             );
 
                 
-                let pages = pageStrings.map(p => {
-                const obj = JSON.parse(p);
-                return obj.text;
-                });
+    //             let pages = pageStrings.map(p => {
+    //             const obj = JSON.parse(p);
+    //             return obj.text;
+    //             });
                 
-                const result = JSON.stringify(pages);
-                //player.runCommand(`give @s minecraft:writable_book{pages:${result}}`)
-                context.source.player.getServer().runCommandSilent(`give ${player.name.string} minecraft:writable_book{pages:${result}}`);
-            })
-    );
+    //             const result = JSON.stringify(pages);
+    //             //player.runCommand(`give @s minecraft:writable_book{pages:${result}}`)
+    //             context.source.player.getServer().runCommandSilent(`give ${player.name.string} minecraft:writable_book{pages:${result}}`);
+    //         })
+    // );
 });
