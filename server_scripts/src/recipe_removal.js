@@ -1,3 +1,4 @@
+// priority: 1000
 const logList = [
     // VANILLA
     "minecraft:oak_log",
@@ -57,7 +58,7 @@ function getPlankFromLog(logId) {
     return `${modId}:${woodType}_planks`
 }
 
-ServerEvents.afterRecipes(event => {
+ServerEvents.recipes(event => {
     event.remove({
         input: "#minecraft:logs",
         output: "#minecraft:planks"
