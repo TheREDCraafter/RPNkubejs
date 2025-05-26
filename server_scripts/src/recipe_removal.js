@@ -1,3 +1,4 @@
+// priority: 100
 const logList = [
     // VANILLA
     "minecraft:oak_log",
