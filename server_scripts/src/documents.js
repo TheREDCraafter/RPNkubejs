@@ -173,7 +173,8 @@ function sign_document(Commands, Arguments, context, tag, author) {
     }
     
     const pages = item.nbt.pages;
-    const input = pages.toString().replace("\n", "\\\\n");
+    let input = pages.toString().replace("\n", "\\\\n");
+    input = input.replace("/", "\/");
     //player.runCommand(`give @s minecraft:written_book{title: "[${stamp}] ${name}", author: "Rathaus [IC]", display: {Lore:['{"text":"[${stamp}] | Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
     if (stamp === "") {
         context.source.player.getServer().runCommandSilent(`give ${player.name.string} minecraft:written_book{title: "${name}", author: "${author}", display: {Lore:['{"text":"Infinity City","color":"dark_purple","italic":false}']}, pages: ${JSON.stringify(JSON.parse(input).map(item => `{"text":"${item}"}`))}}`);
