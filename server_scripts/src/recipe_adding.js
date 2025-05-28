@@ -1,3 +1,14 @@
+function extractMixing(event, plant) {
+    event.recipes.create.mixing(
+        [Item.of(`meds_and_herbs:extract_${plant}`)],
+        [`meds_and_herbs:powder_${plant}`, "meds_and_herbs:bottled_water"]
+    ).heated()
+    event.recipes.create.mixing(
+        [Item.of(`meds_and_herbs:extract_${plant}`)],
+        [`meds_and_herbs:powder_${plant}`, "meds_and_herbs:empty_bottle_clean", Fluid.of("minecraft:water", 1000)]
+    ).heated()
+}
+
 ServerEvents.recipes(event => {
     event.shapeless(
         Item.of("kubejs:hydrochloric_acid"),
@@ -124,4 +135,81 @@ ServerEvents.recipes(event => {
         [Item.of("meds_and_herbs:powder_sugarcane").withChance(0.4)],
         "minecraft:sugar_cane"
     )
+    extractMixing(event, "herbal")
+    extractMixing(event, "vinca")
+    extractMixing(event, "belladonna")
+    extractMixing(event, "sweet_clover")
+    extractMixing(event, "chamomile")
+    extractMixing(event, "artemisia")
+    extractMixing(event, "opium")
+
+    event.recipes.create.mixing(
+        [Item.of(`meds_and_herbs:extract_mushroom`)],
+        [`meds_and_herbs:powder_shrooms`, "meds_and_herbs:bottled_water"]
+    ).heated()
+    event.recipes.create.mixing(
+        [Item.of(`meds_and_herbs:extract_mushroom`)],
+        [`meds_and_herbs:powder_shrooms`, "meds_and_herbs:empty_bottle_clean", Fluid.of("minecraft:water", 1000)]
+    ).heated()
+
+    event.recipes.create.mixing(
+        [Item.of(`meds_and_herbs:extract_caffeine`)],
+        [`meds_and_herbs:powder_cocoa`, "meds_and_herbs:bottled_water"]
+    ).heated()
+    event.recipes.create.mixing(
+        [Item.of(`meds_and_herbs:extract_caffeine`)],
+        [`meds_and_herbs:powder_cocoa`, "meds_and_herbs:empty_bottle_clean", Fluid.of("minecraft:water", 1000)]
+    ).heated()
+
+    event.recipes.create.mixing(
+        [Item.of(`meds_and_herbs:extract_glucose`)],
+        [`meds_and_herbs:powder_sugarcane`, "meds_and_herbs:bottled_water"]
+    ).heated()
+    event.recipes.create.mixing(
+        [Item.of(`meds_and_herbs:extract_glucose`)],
+        [`meds_and_herbs:powder_sugarcane`, "meds_and_herbs:empty_bottle_clean", Fluid.of("minecraft:water", 1000)]
+    ).heated()
+
+    event.recipes.create.mixing(
+        [Item.of(`meds_and_herbs:material_agar`)],
+        [`meds_and_herbs:powder_kelp`, "meds_and_herbs:bottled_water"]
+    ).heated()
+    event.recipes.create.mixing(
+        [Item.of(`meds_and_herbs:material_agar`)],
+        ["meds_and_herbs:powder_kelp", "meds_and_herbs:empty_bottle_clean", Fluid.of("minecraft:water", 1000)]
+    ).heated()
+
+    event.recipes.create.mixing(
+        [Item.of(`meds_and_herbs:alcohol_methanol`)],
+        [`meds_and_herbs:powder_wood`, "meds_and_herbs:bottled_water"]
+    ).heated()
+    event.recipes.create.mixing(
+        [Item.of(`meds_and_herbs:alcohol_methanol`)],
+        ["meds_and_herbs:powder_wood", "meds_and_herbs:empty_bottle_clean", Fluid.of("minecraft:water", 1000)]
+    ).heated()
+
+    event.recipes.create.mixing(
+        [Item.of("meds_and_herbs:beveragebucket")],
+        ["meds_and_herbs:raw_beverage_bucket"]
+    ).superheated()
+
+    event.recipes.create.mixing(
+        [Item.of("meds_and_herbs:alcohol_ethanol"), Item.of("minecraft:bucket")],
+        ["meds_and_herbs:beveragebucket", "meds_and_herbs:empty_bottle_clean"]
+    ).superheated()
+
+    event.recipes.create.mixing(
+        [Item.of("meds_and_herbs:poison_hpp", 2)],
+        ["meds_and_herbs:poison", "meds_and_herbs:belladonna_poison"]
+    ).superheated()
+
+    event.recipes.create.mixing(
+        [Item.of("meds_and_herbs:medicine_morphine", 2)],
+        ["meds_and_herbs:extract_opium", "meds_and_herbs:alcohol_ethanol"]
+    ).superheated()
+
+    event.recipes.create.mixing(
+        [Item.of("meds_and_herbs:medicine_penicillin", 1)],
+        ["meds_and_herbs:penicillium_coal_powder", "meds_and_herbs:alcohol_ethanol"]
+    ).superheated()
 })
