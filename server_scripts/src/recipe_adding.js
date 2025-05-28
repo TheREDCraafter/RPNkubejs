@@ -9,7 +9,26 @@ function extractMixing(event, plant) {
     ).heated()
 }
 
+function standardAutoFrame(event, color) {
+    event.recipes.create.mechanical_crafting(
+        Item.of("automobility:automobile_frame", {frame: `automobility:standard_${color}`}),
+        [
+            "RSR",
+            " L ",
+            "BOB"
+        ],
+        {
+            R: "#forge:stone",
+            S: `minecraft:${color}_dye`,
+            L: "minecraft:leather",
+            B: "minecraft:iron_ingot",
+            O: "minecraft:copper_block"
+        }
+    )
+}
+
 ServerEvents.recipes(event => {
+    /* Custom KubeJS Recipes*/
     event.shapeless(
         Item.of("kubejs:hydrochloric_acid"),
         ["refurbished_furniture:sea_salt", "meds_and_herbs:bottled_water", "kubejs:sulfuric_acid"]
@@ -75,6 +94,9 @@ ServerEvents.recipes(event => {
         [Item.of("meds_and_herbs:powder_herbal", 1).withChance(0.4)],
         "meds_and_herbs:bouquet"
     )
+
+    /* Meds and Herbs */
+
     event.recipes.create.milling(
         [Item.of("meds_and_herbs:powder_vinca", 1).withChance(0.4)],
         "meds_and_herbs:vinca_leaves"
@@ -212,4 +234,238 @@ ServerEvents.recipes(event => {
         [Item.of("meds_and_herbs:medicine_penicillin", 1)],
         ["meds_and_herbs:penicillium_coal_powder", "meds_and_herbs:alcohol_ethanol"]
     ).superheated()
+
+    /* Automobility */
+    /* Frames */
+    // Motorcars
+
+    event.recipes.create.mechanical_crafting(
+        Item.of("automobility:automobile_frame", {frame: "automobility:wooden_motorcar"}),
+        [
+            " RSR ",
+            "PPLPP",
+            " BOB "
+        ],
+        {
+            R: "minecraft:redstone",
+            S: "#minecraft:stone_crafting_materials",
+            L: "minecraft:leather",
+            P: "#forge:stone",
+            B: "#minecraft:logs",
+            O: "minecraft:iron_ingot"
+        }
+    )
+
+    event.recipes.create.mechanical_crafting(
+        Item.of("automobility:automobile_frame", {frame: "automobility:copper_motorcar"}),
+        [
+            " RSR ",
+            "PPLPP",
+            " BOB "
+        ],
+        {
+            R: "minecraft:redstone",
+            S: "#forge:stone",
+            L: "minecraft:leather",
+            P: "#minecraft:planks",
+            B: "minecraft:copper_block",
+            O: "minecraft:copper_ingot"
+        }
+    )
+
+    event.recipes.create.mechanical_crafting(
+        Item.of("automobility:automobile_frame", {frame: "automobility:steel_motorcar"}),
+        [
+            " RSR ",
+            "PPLPP",
+            " BOB "
+        ],
+        {
+            R: "minecraft:redstone",
+            S: "#forge:stone",
+            L: "minecraft:leather",
+            P: "#minecraft:planks",
+            B: "minecraft:iron_block",
+            O: "minecraft:iron_ingot"
+        }
+    )
+
+    event.recipes.create.mechanical_crafting(
+        Item.of("automobility:automobile_frame", {frame: "automobility:golden_motorcar"}),
+        [
+            " RSR ",
+            "PPLPP",
+            " BOB "
+        ],
+        {
+            R: "minecraft:redstone",
+            S: "minecraft:nether_brick",
+            L: "minecraft:leather",
+            P: "#minecraft:planks",
+            B: "minecraft:gold_block",
+            O: "minecraft:gold_ingot"
+        }
+    )
+
+    event.recipes.create.mechanical_crafting(
+        Item.of("automobility:automobile_frame", {frame: "automobility:bejeweled_motorcar"}),
+        [
+            " RSR ",
+            "PPLPP",
+            " BOB "
+        ],
+        {
+            R: "minecraft:redstone",
+            S: "minecraft:obsidian",
+            L: "minecraft:leather",
+            P: "#minecraft:planks",
+            B: "minecraft:iron_ingot",
+            O: "minecraft:diamond_block"
+        }
+    )
+
+    // Tractors
+
+    event.recipes.create.mechanical_crafting(
+        Item.of("automobility:automobile_frame", {frame: "automobility:red_tractor"}),
+        [
+            "RSR",
+            " L ",
+            "BOB"
+        ],
+        {
+            R: "#forge:stone",
+            S: "minecraft:red_dye",
+            L: "minecraft:iron_bars",
+            B: "minecraft:iron_ingot",
+            O: "minecraft:copper_block"
+        }
+    )
+    event.recipes.create.mechanical_crafting(
+        Item.of("automobility:automobile_frame", {frame: "automobility:yellow_tractor"}),
+        [
+            "RSR",
+            " L ",
+            "BOB"
+        ],
+        {
+            R: "#forge:stone",
+            S: "minecraft:yellow_dye",
+            L: "minecraft:iron_bars",
+            B: "minecraft:iron_ingot",
+            O: "minecraft:copper_block"
+        }
+    )
+    event.recipes.create.mechanical_crafting(
+        Item.of("automobility:automobile_frame", {frame: "automobility:green_tractor"}),
+        [
+            "RSR",
+            " L ",
+            "BOB"
+        ],
+        {
+            R: "#forge:stone",
+            S: "minecraft:green_dye",
+            L: "minecraft:iron_bars",
+            B: "minecraft:iron_ingot",
+            O: "minecraft:copper_block"
+        }
+    )
+    event.recipes.create.mechanical_crafting(
+        Item.of("automobility:automobile_frame", {frame: "automobility:blue_tractor"}),
+        [
+            "RSR",
+            " L ",
+            "BOB"
+        ],
+        {
+            R: "#forge:stone",
+            S: "minecraft:blue_dye",
+            L: "minecraft:iron_bars",
+            B: "minecraft:iron_ingot",
+            O: "minecraft:copper_block"
+        }
+    )
+
+    // Standards
+
+    standardAutoFrame(event, "white")
+    standardAutoFrame(event, "orange")
+    standardAutoFrame(event, "magenta")
+    standardAutoFrame(event, "light_blue")
+    standardAutoFrame(event, "yellow")
+    standardAutoFrame(event, "lime")
+    standardAutoFrame(event, "pink")
+    standardAutoFrame(event, "gray")
+    standardAutoFrame(event, "light_gray")
+    standardAutoFrame(event, "cyan")
+    standardAutoFrame(event, "purple")
+    standardAutoFrame(event, "blue")
+    standardAutoFrame(event, "brown")
+    standardAutoFrame(event, "green")
+    standardAutoFrame(event, "red")
+    standardAutoFrame(event, "black")
+
+    /* Engines */
+
+    event.recipes.create.mechanical_crafting(
+        Item.of("automobility:automobile_engine", {engine: "automobility:stone"}),
+        [
+            "MSFSM"
+        ],
+        {
+            M: "#minecraft:logs",
+            S: "#minecraft:stone_crafting_materials",
+            F: "minecraft:furnace"
+        }
+    )
+
+    event.recipes.create.mechanical_crafting(
+        Item.of("automobility:automobile_engine", {engine: "automobility:copper"}),
+        [
+            "MSFSM"
+        ],
+        {
+            M: "minecraft:copper_ingot",
+            S: "minecraft:iron_nugget",
+            F: "minecraft:furnace"
+        }
+    )
+
+    event.recipes.create.mechanical_crafting(
+        Item.of("automobility:automobile_engine", {engine: "automobility:iron"}),
+        [
+            "MSFSM"
+        ],
+        {
+            M: "minecraft:iron_ingot",
+            S: "#minecraft:stone_crafting_materials",
+            F: "minecraft:furnace"
+        }
+    )
+
+    event.recipes.create.mechanical_crafting(
+        Item.of("automobility:automobile_engine", {engine: "automobility:gold"}),
+        [
+            "MSFSM"
+        ],
+        {
+            M: "minecraft:gold_ingot",
+            S: "#minecraft:stone_crafting_materials",
+            F: "minecraft:furnace"
+        }
+    )
+
+    event.recipes.create.mechanical_crafting(
+        Item.of("automobility:automobile_engine", {engine: "automobility:creative"}),
+        [
+            "MSFSM"
+        ],
+        {
+            M: "minecraft:netherite_block",
+            S: "minecraft:obsidian",
+            F: "minecraft:furnace"
+        }
+    )
+    
 })
