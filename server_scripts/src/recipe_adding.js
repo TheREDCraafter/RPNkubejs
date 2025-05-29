@@ -27,6 +27,19 @@ function standardAutoFrame(event, color) {
     )
 }
 
+function autoWheel(event, name, base, material) {
+    event.recipes.create.mechanical_crafting(
+        Item.of("automobility:automobile_wheel", {wheel: `automobility:${name}`}),
+        [
+            "BMB"
+        ],
+        {
+            B: base,
+            M: material
+        }
+    )
+}
+
 ServerEvents.recipes(event => {
     /* Custom KubeJS Recipes*/
     event.shapeless(
@@ -457,15 +470,38 @@ ServerEvents.recipes(event => {
     )
 
     event.recipes.create.mechanical_crafting(
+        Item.of("automobility:automobile_engine", {engine: "automobility:diamond"}),
+        [
+            "MSFSM"
+        ],
+        {
+            M: "minecraft:diamond",
+            S: "minecraft:iron_ingot",
+            F: "minecraft:furnace"
+        }
+    )
+
+    event.recipes.create.mechanical_crafting(
         Item.of("automobility:automobile_engine", {engine: "automobility:creative"}),
         [
             "MSFSM"
         ],
         {
-            M: "minecraft:netherite_block",
+            M: "minecraft:netherite_ingot",
             S: "minecraft:obsidian",
             F: "minecraft:furnace"
         }
     )
-    
+
+    /* Wheels */
+    autoWheel(event, "carriage", "#minecraft:planks", "minecraft:stick")
+    autoWheel(event, "plated", "#minecraft:logs", "minecraft:copper_ingot")
+    autoWheel(event, "street", "#minecraft:stone_crafting_materials", "minecraft:iron_ingot")
+    autoWheel(event, "gilded", "minecraft:nether_brick", "minecraft:gold_ingot")
+    autoWheel(event, "bejeweled", "minecraft:obsidian", "minecraft:diamond")
+    autoWheel(event, "standard", "minecraft:black_wool", "minecraft:iron_nugget")
+    autoWheel(event, "tractor", "minecraft:black_wool", "minecraft:gold_nugget")
+    autoWheel(event, "off_road", "minecraft:black_wool", "minecraft:iron_block")
+    autoWheel(event, "steel", "minecraft:black_wool", "minecraft:iron_ingot")
+
 })
