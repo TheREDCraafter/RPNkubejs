@@ -229,7 +229,7 @@ ServerEvents.recipes(event => {
     ).superheated()
 
     event.recipes.create.mixing(
-        [Item.of("meds_and_herbs:alcohol_ethanol"), Item.of("minecraft:bucket")],
+        [Item.of("meds_and_herbs:alcohol_ethanol")],
         ["meds_and_herbs:beveragebucket", "meds_and_herbs:empty_bottle_clean"]
     ).superheated()
 
