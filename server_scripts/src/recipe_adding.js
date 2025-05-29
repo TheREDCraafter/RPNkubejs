@@ -248,6 +248,16 @@ ServerEvents.recipes(event => {
         ["meds_and_herbs:penicillium_coal_powder", "meds_and_herbs:alcohol_ethanol"]
     ).superheated()
 
+    event.recipes.create.mixing(
+        [Item.of(`meds_and_herbs:medicine_antidote`)],
+        [`meds_and_herbs:bottled_poison_blood`, "meds_and_herbs:alcohol_ethanol"]
+    ).superheated()
+
+    event.recipes.create.mixing(
+        [Item.of(`meds_and_herbs:medicine_hpa`)],
+        [`meds_and_herbs:bottled_hpp_blood`, "meds_and_herbs:medicine_antidote"]
+    ).superheated()
+
     /* Automobility */
     /* Frames */
     // Motorcars
