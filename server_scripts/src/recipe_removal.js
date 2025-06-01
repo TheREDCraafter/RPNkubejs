@@ -74,4 +74,7 @@ ServerEvents.recipes(event => {
         input: "minecraft:wheat",
         output: "minecraft:bread"
     })
+    event.remove({
+        output: "lightmanscurrency:coinmint"
+    })
 })
