@@ -20,7 +20,7 @@ const goals = [
             "Folge einfach der grünen Linie."
         ],
         after: [
-            "Befolge jetzt die Anweisungen im Chat, um deinen Personalausweis zu bekommen."
+            "Sprich jetzt mit Mr. RedBlood, um deinen Personalausweis zu bekommen."
         ],
         next: false,
         after_action: (player) => { id_card(player); },
@@ -140,7 +140,6 @@ const goals = [
 
 function id_card(player) {
     player.getServer().runCommandSilent(`tag ${player.name.string} add rpn.continuescene`);
-    player.getServer().runCommand(`perso ${player.name.string}`);
 }
 
 function distanceBetween(pos1, pos2) {
