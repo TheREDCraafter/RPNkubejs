@@ -96,10 +96,11 @@ function givePersonalausweis(player, data) {
 
     if (player.getTags().contains("rpn.continuescene")){
         player.give(Item.of("lightmanscurrency:wallet_leather"));
-        player.give(Item.of("lightmanscurrency:coin_emerald", 5));
+        player.give(Item.of("lightmanscurrency:coin_diamond", 5));
         player.give(Item.of("minecraft:apple", 16));
         player.getServer().runCommandSilent(`tag ${player.name.string} remove rpn.continuescene`);
         player.getServer().runCommandSilent(`cutscene 1 ${player.name.string}`);
+        player.getServer().runCommandSilent(`clear ${player.name.string} patchouli:guide_book`);
     }
 }
 
