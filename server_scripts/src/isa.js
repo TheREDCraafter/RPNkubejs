@@ -1,22 +1,21 @@
-// ServerEvents.commandRegistry(event => {
-//     const { commands: Commands, arguments: Arguments } = event;
+ServerEvents.commandRegistry(event => {
+    const { commands: Commands, arguments: Arguments } = event;
 
-//     event.register(
-//         Commands.literal('isa_tell')
-//             .requires(source => source.getTags().contains("rpn.isa"))
-//             .then(Commands.argument('player', Arguments.PLAYER.create(event))
-//             .then(Commands.argument('message', Arguments.STRING.create(event))
-//                 .executes(context => {
-//                     const player = Arguments.PLAYER.getResult(context, 'player');
-//                     const message = Arguments.STRING.getResult(context, 'message');
-//                     player.tell("[ISA Agent] " + message);
-//                     context.server.getPlayers().forEach(p => {
-//                         if (p.getTags().contains("rpn.isa")) {
-//                             p.tell("[ISA Agent] " + message);
-//                         }
-//                     })
-//                     return 1;
-//                 })
-//             )
-//     ));
-// });
+    event.register(
+        Commands.literal('isa_tell')
+            .then(Commands.argument('player', Arguments.PLAYER.create(event))
+            .then(Commands.argument('message', Arguments.STRING.create(event))
+                .executes(context => {
+                    if (!context.source.player.getTags().contains("rpn.isa")) {
+                        context.source.player.tell("You do not have permission to use this command.");
+                        return 0;
+                    }
+                    const player = Arguments.PLAYER.getResult(context, 'player');
+                    const message = Arguments.STRING.getResult(context, 'message');
+                    player.getServer().runCommandSilent(`tellraw ${player.name.string} [{"text":"<ISA Agent> ","color":"red"},{"text":"${message}", "color":"white"}]`)
+                    player.getServer().runCommandSilent(`tellraw @a[tag=rpn.isa,name=!${player.name.string}] [{"text":"<ISA Agent> ","color":"red"},{"text":"${message}", "color":"white"}]`)
+                    return 1;
+                })
+            )
+    ));
+});

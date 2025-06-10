@@ -514,4 +514,19 @@ ServerEvents.recipes(event => {
     autoWheel(event, "off_road", "minecraft:black_wool", "minecraft:iron_block")
     autoWheel(event, "steel", "minecraft:black_wool", "minecraft:iron_ingot")
 
+
+    /* MISC */
+
+    // Chips
+    event.campfireCooking("kubejs:vegetable_chips", "kubejs:carrot_slices")
+    event.campfireCooking("kubejs:beetroot_chips", "kubejs:beetroot_slices")
+    event.campfireCooking("kubejs:fried_onion_rings", "kubejs:onion_rings")
+    event.campfireCooking("kubejs:nettle_chips", "farmersdelight:straw")
+    event.campfireCooking("kitchen_grow:potato_chips", "kitchen_grow:potato_slices")
+
+    // Related foods
+    event.shapeless(
+        Item.of("kubejs:fish_and_chips"),
+        ["minecraft:cooked_cod", "#kubejs:chips"]
+    )
 })

@@ -19,5 +19,13 @@
     "block.kubejs.hemp_plant": "Hanfpflanze",
     "item.kubejs.hemp_plant_seed": "Hanfsamen",
     "item.kubejs.cannabis_dough": "Cannabisteig",
-    "item.kubejs.cannabis_bread": "Cannabisbrot"
+    "item.kubejs.cannabis_bread": "Cannabisbrot",
+    "item.kubejs.vegetable_chips": "Gemüsechips",
+    "item.kubejs.carrot_slices": "Karrotenscheiben",
+    "item.kubejs.beetroot_chips": "Rote Beete Chips",
+    "item.kubejs.beetroot_slices": "Rote Beete Scheiben",
+    "item.kubejs.fried_onion_rings": "Frittierte Zwiebelringe",
+    "item.kubejs.onion_rings": "Zwiebelringe",
+    "item.kubejs.fish_and_chips": "Fish 'n' Chips",
+    "item.kubejs.nettle_chips": "Brennnesselchips"
 }

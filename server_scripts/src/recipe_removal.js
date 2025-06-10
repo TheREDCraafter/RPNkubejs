@@ -77,4 +77,12 @@ ServerEvents.recipes(event => {
     event.remove({
         output: "lightmanscurrency:coinmint"
     })
+    event.remove({
+        type: "minecraft:smelting",
+        output: "kitchen_grow:potato_chips"
+    })
+    event.remove({
+        type: "minecraft:smoking",
+        output: "kitchen_grow:potato_chips"
+    })
 })

@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "farmersdelight:onion"
+    }
+  ],
+  "result": [
+    {
+      "count": 4,
+      "item": "kubejs:onion_rings"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}
