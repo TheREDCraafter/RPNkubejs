@@ -228,6 +228,12 @@ ServerEvents.commandRegistry(event => {
                     return 1;
                 })
             )
+            .then(Commands.literal("steuerzahlung"))
+                .executes(context => {
+                    const player = context.source.player;
+                    player.getServer().runCommandSilent(`give ${player.name.string} written_book{title:"",author:"",pages:['{"text":"-------------------\\nSteuerzahlung\\n-------------------\\n\\nName: Name, Vorname\\n\\nDatum: 01.01.1800\\n\\nBetrag: 100.00$"}']} 1`);
+                    return 1;
+                })
     );
 
     event.register(
