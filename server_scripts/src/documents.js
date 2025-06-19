@@ -252,6 +252,17 @@ ServerEvents.commandRegistry(event => {
                 )
             )
     );
+    event.register(
+        Commands.literal("sign_bank")
+            .then(Commands.argument("stamp", Arguments.STRING.create(event))
+                .then(Commands.argument("name", Arguments.STRING.create(event))
+                    .executes(context => {
+                        sign_document(Commands, Arguments, context, "rpn.sign_documents_bank", "Staatsbank [IC]");
+                        return 1;
+                    })
+                )
+            )
+    );
     // event.register(
     //     Commands.literal("unsign")
     //         .executes( context => {
