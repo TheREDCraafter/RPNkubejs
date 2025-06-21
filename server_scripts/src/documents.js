@@ -51,6 +51,7 @@ Tätigkeit: Müllfrau\",\"---- Umsatz ----\n\
 Name: Musterfirma\n\
 Sektor: Bauarbeiten\n\
 Umsatz: 300$\n\
+Umsatz Stände: 100$\n\
 Anzahl Mitarbeiter: 2 \n\
 \n\
 -- Firma 2 --\n\
